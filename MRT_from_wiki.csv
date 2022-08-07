@@ -1,0 +1,354 @@
+﻿Code,Name,Station name Chinese,Station name Tamil,Opening,Name(s) during planning stages,Abbreviation,Location(s),Interchange; Adjacent transportation
+Alpha-numeric code(s),Station name,Station name,Station name,Opening,Name(s) during planning stages,Abbreviation,Location(s),"Interchange;
+Adjacent transportation"
+In operation,English • Malay,Chinese,Tamil,Opening,Name(s) during planning stages,Abbreviation,Location(s),"Interchange;
+Adjacent transportation"
+North South Line (NSL),North South Line (NSL),North South Line (NSL),North South Line (NSL),North South Line (NSL),North South Line (NSL),North South Line (NSL),North South Line (NSL),North South Line (NSL)
+NS1  EW24,Jurong East,裕廊东,ஜூரோங் கிழக்கு,10-Mar-90,Jurong East,JUR,Jurong East,"East West Line
+― 
+ Jurong East"
+NS2,Bukit Batok,武吉巴督,புக்கிட் பாத்தோக்,10-Mar-90,Bukit Batok South,BBT,Bukit Batok,Bukit Batok
+NS3,Bukit Gombak,武吉甘柏,புக்கிட் கோம்பாக்,10-Mar-90,Bukit Batok North,BGB,Bukit Batok,—
+NS3A,Brickland,红砖,பிரிக்லேன்ட்,Mid-2030s,Brickland,TBA,Exact location not yet known,—
+NS4  BP1,Choa Chu Kang,蔡厝港,சுவா சூ காங்,10-Mar-90,Choa Chu Kang,CCK,Choa Chu Kang,"Bukit Panjang LRT
+― 
+ Choa Chu Kang"
+NS5,Yew Tee,油池,இயூ டீ,10-Feb-96,Choa Chu Kang North,YWT,Choa Chu Kang,—
+NS6,Sungei Kadut,双溪加株,சுங்கை காடுத்,Mid-2030s,"Kadut, Sungei Kadut",TBA,Sungei Kadut,—
+NS7,Kranji,克兰芝,கிராஞ்சி,10-Feb-96,Kranji,KRJ,Sungei Kadut,—
+NS8,Marsiling,马西岭,மார்சிலிங்,10-Feb-96,Woodlands West,MSL,Woodlands,—
+NS9  TE2,Woodlands,兀兰,ஊட்லண்ட்ஸ்,10-Feb-96,Woodlands Central,WDL,Woodlands,"Thomson–East Coast Line
+― 
+ Woodlands
+ Woodlands Temporary"
+NS10,Admiralty,海军部,அட்மிரல்ட்டி,10-Feb-96,Woodlands East,ADM,Woodlands,—
+NS11,Sembawang,三巴旺,செம்பாவாங்,10-Feb-96,Sembawang,SBW,Sembawang,Sembawang
+"NS12 
+Infill station",Canberra,坎贝拉,கான்பரா,2-Nov-19,Canberra,CBR,Sembawang,—
+NS13,Yishun,义顺,யீஷூன்,20-Dec-88,Nee Soon North,YIS,Yishun,Yishun
+NS14,Khatib,卡迪,காதிப்,20-Dec-88,Nee Soon South,KTB,Yishun,—
+NS15,Yio Chu Kang,杨厝港,இயோ சூ காங்,7-Nov-87,Yio Chu Kang,YCK,Ang Mo Kio,Yio Chu Kang
+NS16,Ang Mo Kio,宏茂桥,அங் மோ கியோ,7-Nov-87,Ang Mo Kio,AMK,Ang Mo Kio,Ang Mo Kio
+NS17  CC15,Bishan,碧山,பீஷான்,7-Nov-87,"Kampong San Teng, San Teng",BSH,Bishan,"Circle Line
+― 
+ Bishan"
+NS18,Braddell,布莱德,பிரேடல்,7-Nov-87,Braddell,BDL,Toa Payoh,—
+NS19,Toa Payoh,大巴窑,தோ பாயோ,7-Nov-87,Toa Payoh,TAP,Toa Payoh,Toa Payoh
+NS20,Novena,诺维娜,நொவீனா,12-Dec-87,Thomson,NOV,Novena,—
+NS21–DT11,Newton,纽顿,நியூட்டன்,12-Dec-87,Newton Circus,NEW,Newton,Downtown Line
+NS22,Orchard,乌节,ஆர்ச்சர்ட்,12-Dec-87,"Scotts, Orchard Boulevard",ORC,"Orchard Planning Area, River Valley Planning Area",—
+NS23,Somerset,索美塞,சாமர்செட்,12-Dec-87,Killiney,SOM,Orchard Planning Area,—
+NS24  NE6  CC1,Dhoby Ghaut,多美歌,டோபி காட்,12-Dec-87,Dhoby Ghaut,DBG,Museum Planning Area,"North East Line 
+ Circle Line"
+NS25  EW13,City Hall,政府大厦,நகர மண்டபம்,12-Dec-87,Saint Andrew's,CTH,Downtown Core,East West Line
+NS26  EW14,Raffles Place,莱佛士坊,ராஃபிள்ஸ் பிளேஸ்,12-Dec-87,Central,RFP,Downtown Core,East West Line
+NS27  CE2,Marina Bay,滨海湾,மரீனா பே,4-Nov-89,"Telok Ayer Basin, Marina South",MRB,"Downtown Core, Straits View Planning Area",Circle Line
+NS28,Marina South Pier,滨海南码头,மரினா சவுத் படகுத்துறை,23-Nov-14,"Marina View, Marina Pier",MSP,Straits View Planning Area,"Marina South Pier  
+ Marina Bay Cruise Centre"
+East West Line (EWL),East West Line (EWL),East West Line (EWL),East West Line (EWL),East West Line (EWL),East West Line (EWL),East West Line (EWL),East West Line (EWL),East West Line (EWL)
+EW1,Pasir Ris,巴西立,பாசிர் ரிஸ்,16-Dec-89,Pasir Ris,PSR,Pasir Ris,Pasir Ris
+EW2–DT32,Tampines,淡滨尼,தெம்பினிஸ்,16-Dec-89,Tampines North,TAM,Tampines,"Downtown Line 
+― 
+ Tampines
+ Tampines Concourse"
+EW3,Simei,四美,ஸீமெய்,16-Dec-89,Tampines South,SIM,Tampines,—
+EW4  CG,Tanah Merah,丹那美拉,தானா மேரா,4-Nov-89,"Bedok, Changi",TNM,Bedok,EWL Changi Airport Branch Line
+EW5,Bedok,勿洛,பிடோக்,4-Nov-89,Chai Chee,BDK,Bedok,Bedok
+EW6,Kembangan,景万岸,கெம்பாங்கான்,4-Nov-89,Frankel,KEM,Bedok,—
+EW7,Eunos,友诺士,யூனுஸ்,4-Nov-89,Eunos,EUN,Geylang,Eunos
+EW8  CC9,Paya Lebar,巴耶利峇,பாய லேபார்,4-Nov-89,Paya Lebar,PYL,Geylang,Circle Line
+EW9,Aljunied,阿裕尼,அல்ஜூனிட்,4-Nov-89,Aljunied,ALJ,Geylang,—
+EW10,Kallang,加冷,காலாங்,4-Nov-89,Geylang,KAL,Kallang,Lorong 1 Geylang
+EW11,Lavender,劳明达,லவண்டர்,4-Nov-89,Crawford,LVR,Kallang,—
+EW12  DT14,Bugis,武吉士,பூகிஸ்,4-Nov-89,"Rochore, Victoria",BGS,"Downtown Core, Rochor",Downtown Line
+EW13  NS25,City Hall,政府大厦,நகர மண்டபம்,12-Dec-87,Saint Andrew's,CTH,Downtown Core,North South Line
+EW14  NS26,Raffles Place,莱佛士坊,ராஃபிள்ஸ் பிளேஸ்,12-Dec-87,Central,RFP,Downtown Core,North South Line
+EW15,Tanjong Pagar,丹戎巴葛,தஞ்சோங் பகார்,12-Dec-87,Maxwell,TPG,Downtown Core,Shenton Way
+EW16  NE3,Outram Park,欧南园,ஊட்ரம் பார்க்,12-Dec-87,Outram Park,OTP,"Bukit Merah, Outram","North East Line
+― 
+ Kampong Bahru"
+EW17,Tiong Bahru,中峇鲁,தியோங் பாரு,12-Mar-88,Tiong Bahru,TIB,Bukit Merah,Tiong Bahru
+EW18,Redhill,红山,ரெட்ஹில்,12-Mar-88,Alexandra,RDH,Bukit Merah,—
+EW19,Queenstown,女皇镇,குவீன்ஸ்டவுன்,12-Mar-88,"Princess, Commonwealth",QUE,Queenstown,—
+EW20,Commonwealth,联邦,காமன்வெல்த்,12-Mar-88,Queenstown,COM,Queenstown,—
+EW21  CC22,Buona Vista,波那维斯达,புவன விஸ்தா,12-Mar-88,North Buona Vista,BNV,Queenstown,"Circle Line
+― 
+ Buona Vista
+ Ghim Moh"
+EW22,Dover,杜弗,டோவெர்,18-Oct-01,Polytechnic,DVR,Queenstown,—
+EW23,Clementi,金文泰,கிளிமெண்டி,12-Mar-88,Clementi,CLE,Clementi,Clementi
+EW24  NS1,Jurong East,裕廊东,ஜூரோங் கிழக்கு,5-Nov-88,"Jurong, Jurong Town",JUR,Jurong East,"North South Line
+― 
+ Jurong East"
+EW25,Chinese Garden,裕华园,சீனத் தோட்டம்,5-Nov-88,Jurong Lake,CNG,Jurong East,—
+EW26,Lakeside,湖畔,ஏரிக்கரை,5-Nov-88,Corporation,LKS,Jurong West,—
+EW27,Boon Lay,文礼,பூன் லே,6-Jul-90,Jurong West,BNL,Jurong West,Boon Lay
+EW28,Pioneer,先驱,பயனியர்,28-Feb-09,Pioneer,PNR,Jurong West,—
+EW29,Joo Koon,裕群,ஜூ கூன்,28-Feb-09,Joo Koon,JKN,Pioneer Planning Area,Joo Koon
+EW30,Gul Circle,卡尔圈,கல் சர்க்கல்,18-Jun-17,Tuas,GCL,"Pioneer Planning Area, Tuas",—
+EW31,Tuas Crescent,大士弯,துவாஸ் கிரசண்ட்,18-Jun-17,Tuas Crescent,TCR,Tuas,—
+EW32,Tuas West Road,大士西路,துவாஸ் வெஸ்ட் ரோடு,18-Jun-17,Tuas West,TWR,Tuas,—
+EW33,Tuas Link,大士连路,துவாஸ் லிங்க்,18-Jun-17,Tuas Link,TLK,Tuas,"Tuas
+― 
+ Tuas Checkpoint"
+Changi Airport Branch Line (CAL),Changi Airport Branch Line (CAL),Changi Airport Branch Line (CAL),Changi Airport Branch Line (CAL),Changi Airport Branch Line (CAL),Changi Airport Branch Line (CAL),Changi Airport Branch Line (CAL),Changi Airport Branch Line (CAL),Changi Airport Branch Line (CAL)
+CG1  DT35,Expo,博览,எக்ஸ்போ,10-Jan-01,Somapah,XPO,Tampines,Downtown Line
+CG2,Changi Airport,樟宜机场,சாங்கி விமானநிலையம்,8-Feb-02,Changi Airport,CGA,Changi,"Changi Airport
+― 
+ Changi Airport Terminals 1-4"
+North East Line (NEL),North East Line (NEL),North East Line (NEL),North East Line (NEL),North East Line (NEL),North East Line (NEL),North East Line (NEL),North East Line (NEL),North East Line (NEL)
+NE1  CC29,HarbourFront,港湾,துறைமுகம்,20-Jun-03,World Trade Centre,HBF,Bukit Merah,"Circle Line
+―
+ HarbourFront
+―
+ Sentosa Express VivoCity
+ Singapore Cable Car Mount Faber Line
+ HarbourFront Centre 
+ Singapore Cruise Centre"
+—,"Station code ""NE2"" is reserved for a possible future station.","Station code ""NE2"" is reserved for a possible future station.","Station code ""NE2"" is reserved for a possible future station.","Station code ""NE2"" is reserved for a possible future station.","Station code ""NE2"" is reserved for a possible future station.","Station code ""NE2"" is reserved for a possible future station.","Station code ""NE2"" is reserved for a possible future station.","Station code ""NE2"" is reserved for a possible future station."
+NE3  EW16,Outram Park,欧南园,ஊட்ரம் பார்க்,20-Jun-03,Outram Park,OTP,"Bukit Merah, Outram","East West Line
+― 
+ Kampong Bahru"
+NE4  DT19,Chinatown,牛车水,சைனாடவுன்,20-Jun-03,People's Park,CNT,Outram,Downtown Line
+NE5,Clarke Quay,克拉码头,கிளார்க் கீ,20-Jun-03,Clarke Quay,CQY,Singapore River Planning Area,—
+NE6  NS24  CC1,Dhoby Ghaut,多美歌,டோபி காட்,20-Jun-03,Dhoby Ghaut,DBG,Museum Planning Area,"North South Line
+ Circle Line"
+NE7  DT12,Little India,小印度,லிட்டில் இந்தியா,20-Jun-03,Kandang Kerbau,LTI,"Kallang, Rochor",Downtown Line
+NE8,Farrer Park,花拉公园,ஃபேரர் பார்க்,20-Jun-03,Farrer Park,FRP,"Kallang, Rochor",—
+NE9,Boon Keng,文庆,பூன் கெங்,20-Jun-03,Boon Keng,BNK,Kallang,—
+NE10,Potong Pasir,波东巴西,போத்தோங் பாசிர்,20-Jun-03,Sennett,PTP,Toa Payoh,—
+NE11,Woodleigh,兀里,உட்லீ,20-Jun-11,Woodleigh,WLH,Toa Payoh,Bidadari
+NE12  CC13,Serangoon,实龙岗,சிராங்கூன்,20-Jun-03,Serangoon,SER,Serangoon,"Circle Line
+―
+ Serangoon"
+NE13,Kovan,高文,கோவன்,20-Jun-03,Kovan,KVN,Hougang,—
+NE14,Hougang,后港,ஹவ்காங்,20-Jun-03,Hougang,HGN,Hougang,Hougang Central
+NE15,Buangkok,万国,புவாங்கோக்,15-Jan-06,Buangkok,BGK,Sengkang,Buangkok
+NE16  STC,Sengkang,盛港,செங்காங்,20-Jun-03,Sengkang,SKG,Sengkang,"Sengkang LRT
+―
+ Sengkang"
+NE17  PTC,Punggol,榜鹅,பொங்கோல்,20-Jun-03,Punggol,PGL,Punggol,"Punggol LRT
+―
+ Punggol"
+North East Line Extension (NELe),North East Line Extension (NELe),North East Line Extension (NELe),North East Line Extension (NELe),North East Line Extension (NELe),North East Line Extension (NELe),North East Line Extension (NELe),North East Line Extension (NELe),North East Line Extension (NELe)
+—,Punggol Coast,榜鹅海岸,பொங்கோல் கோஸ்ட்,2024,Punggol Coast,PGC,Punggol,Punggol North
+Circle Line (CCL),Circle Line (CCL),Circle Line (CCL),Circle Line (CCL),Circle Line (CCL),Circle Line (CCL),Circle Line (CCL),Circle Line (CCL),Circle Line (CCL)
+CC1  NS24  NE6,Dhoby Ghaut,多美歌,டோபி காட்,17-Apr-10,Dhoby Ghaut,DBG,Museum Planning Area,"North South Line
+ North East Line"
+CC2,Bras Basah,百胜,பிராஸ் பாசா,17-Apr-10,Museum / Bras Basah,BBS,Museum Planning Area,—
+CC3,Esplanade,滨海中心,எஸ்பிளனேட்,17-Apr-10,"Convention Centre, Esplanade / Suntec",EPN,Downtown Core,—
+CC4  DT15,Promenade,宝门廊,புரொமனாட்,17-Apr-10,"Millenia, Promenade / Marina Centre / Sheares",PMN,Downtown Core,"Downtown Line
+― 
+ Marina Centre"
+CC5,Nicoll Highway,尼诰大道,நிக்கல் நெடுஞ்சாலை,17-Apr-10,Nicoll Highway / Kampong Glam,NCH,Downtown Core,—
+CC6,Stadium,体育场,ஸ்டேடியம்,17-Apr-10,"Boulevard, Stadium / Tanjong Rhu",SDM,Kallang,—
+CC7,Mountbatten,蒙巴登,மவுண்ட்பேட்டன்,17-Apr-10,Old Airport Road / Mountbatten,MBT,"Geylang, Kallang",—
+CC8,Dakota,达科达,டகோட்டா,17-Apr-10,"Tanjong Katong, Dakota / Dunman",DKT,Geylang,—
+CC9  EW8,Paya Lebar,巴耶利峇,பாய லேபார்,17-Apr-10,Paya Lebar,PYL,Geylang,East West Line
+CC10  DT26,MacPherson,麦波申,மெக்பர்சன்,17-Apr-10,MacPherson / Ubi,MPS,Geylang,Downtown Line
+CC11,Tai Seng,大成,தை செங்,17-Apr-10,Upper Paya Lebar / Tai Seng / Kim Chuan,TSG,"Hougang, Toa Payoh",—
+CC12,Bartley,巴特礼,பார்ட்லி,28-May-09,Bartley / How Sun,BLY,"Serangoon, Toa Payoh",—
+CC13  NE12,Serangoon,实龙岗,சிராங்கூன்,28-May-09,Serangoon,SER,Serangoon,"North East Line
+―
+ Serangoon"
+CC14,Lorong Chuan,罗弄泉,லோரோங் சுவான்,28-May-09,Lorong Chuan / Mei Hwan,LRC,Serangoon,—
+CC15  NS17,Bishan,碧山,பீஷான்,28-May-09,Bishan,BSH,Bishan,"North South Line
+―
+ Bishan"
+CC16,Marymount,玛丽蒙,மேரிமவுண்ட்,28-May-09,Marymount / Shunfu,MRM,Bishan,—
+CC17  TE9,Caldecott,加利谷,கால்டிகாட்,8-Oct-11,Thomson / Caldecott,CDT,Toa Payoh,Thomson–East Coast Line
+—,Bukit Brown,武吉布朗,புக்கிட் பிரவுன்,TBA,Bukit Brown,TBA,Novena,—
+CC19  DT9,Botanic Gardens • Kebun Bunga,植物园,பூ மலை,8-Oct-11,"Adam, Botanic Gardens / Cluny Road",BTN,Tanglin,Downtown Line
+CC20,Farrer Road,花拉路,ஃபேரர் சாலை,8-Oct-11,"Farrer, Farrer Road / Woollerton",FRR,"Bukit Timah, Tanglin",—
+CC21,Holland Village,荷兰村,ஹாலந்து வில்லேஜ்,8-Oct-11,"Holland, Holland Village / Chip Bee",HLV,"Bukit Timah, Queenstown",—
+CC22  EW21,Buona Vista,波那维斯达,புவன விஸ்தா,8-Oct-11,Buona Vista,BNV,Queenstown,"East West Line
+― 
+ Buona Vista
+ Ghim Moh"
+CC23,one-north,纬壹,ஒன்-நார்த்,8-Oct-11,one-north / Portsdown / Ayer Rajah,ONH,Queenstown,—
+CC24,Kent Ridge,肯特岗,கெண்ட் ரிஜ்,8-Oct-11,National University Hospital / Kent Ridge,KRG,Queenstown,—
+CC25,Haw Par Villa,虎豹别墅,ஹா பர் வில்லா,8-Oct-11,West Coast / Haw Par Villa,HPV,Queenstown,—
+CC26,Pasir Panjang,巴西班让,பாசிர் பாஞ்சாங்,8-Oct-11,Pasir Panjang / Bukit Chandu,PPJ,Queenstown,—
+CC27,Labrador Park,拉柏多公园,லாப்ரடார் பூங்கா,8-Oct-11,Alexandra / Tanjong Berlayar,LBD,Bukit Merah,—
+CC28,Telok Blangah,直落布兰雅,தெலுக் பிளாங்கா,8-Oct-11,Telok Blangah / Keppel,TLB,Bukit Merah,—
+CC29  NE1,HarbourFront,港湾,துறைமுகம்,8-Oct-11,HarbourFront,HBF,Bukit Merah,"North East Line
+―
+ HarbourFront
+―
+ Sentosa Express VivoCity
+ Singapore Cable Car Mount Faber Line
+ HarbourFront Centre 
+ Singapore Cruise Centre"
+Circle Line Stage 6,Circle Line Stage 6,Circle Line Stage 6,Circle Line Stage 6,Circle Line Stage 6,Circle Line Stage 6,Circle Line Stage 6,Circle Line Stage 6,Circle Line Stage 6
+—,Keppel,吉宝,கெப்பல்,2026,Keppel / Keppel Harbour / Keppel Port,KPL,Bukit Merah,—
+—,Cantonment,广东民,கெண்டொன்மன்,2026,Cantonment / Tanjong Pagar West / Spottiswoode,CTM,Bukit Merah,—
+—,Prince Edward Road,爱德华太子路,பிரின்ஸ் எட்வர்ட் ரோடு,2026,"Prince Edward, Prince Edward Road / Palmer / Marina Coastal",PER,Downtown Core,—
+Circle Line Extension (CCLe),Circle Line Extension (CCLe),Circle Line Extension (CCLe),Circle Line Extension (CCLe),Circle Line Extension (CCLe),Circle Line Extension (CCLe),Circle Line Extension (CCLe),Circle Line Extension (CCLe),Circle Line Extension (CCLe)
+CE1  DT16,Bayfront,海湾舫,பேஃபிரண்ட்,14-Jan-12,Bayfront / Marina Bay Sands,BFT,Downtown Core,Downtown Line
+CE2  NS27,Marina Bay,滨海湾,மரீனா பே,14-Jan-12,Marina Bay,MRB,"Downtown Core, Straits View Planning Area",North South Line
+Downtown Line (DTL),Downtown Line (DTL),Downtown Line (DTL),Downtown Line (DTL),Downtown Line (DTL),Downtown Line (DTL),Downtown Line (DTL),Downtown Line (DTL),Downtown Line (DTL)
+—,Sungei Kadut,双溪加株,சுங்கை காடுத்,Mid-2030s,Sungei Kadut,TBA,Sungei Kadut,
+DT1–BP6,Bukit Panjang,武吉班让,புக்கிட் பாஞ்சாங்,27-Dec-15,Petir,BKP,"Bukit Batok, Bukit Panjang, Choa Chu Kang","Bukit Panjang LRT 
+― 
+ Bukit Panjang"
+DT2,Cashew,凯秀,கேஷ்யூ,27-Dec-15,Cashew / Chestnut / Hazel Park,CSW,"Bukit Batok, Bukit Panjang",—
+DT3,Hillview,山景,ஹில்வியூ,27-Dec-15,Hillview / Dairy Farm / Upper Bukit Timah,HVW,"Bukit Batok, Bukit Panjang",—
+—,Hume,谦道,ஹியூம்,2025,Hume,TBA,"Bukit Batok, Bukit Panjang",—
+DT5,Beauty World,美世界,பியூட்டி வோர்ல்ட்,27-Dec-15,Beauty World / Anak Bukit / Seventh Mile,BTW,Bukit Timah,Beauty World
+DT6,King Albert Park,阿尔柏王园,கிங் ஆல்பர்ட் பார்க்,27-Dec-15,Blackmore / Dunearn / King Albert Park,KAP,Bukit Timah,—
+DT7,Sixth Avenue,第六道,சிக்ஸ்த் அவென்யூ,27-Dec-15,Sixth Avenue / Bukit Timah / Eng Neo,SAV,Bukit Timah,—
+DT8,Tan Kah Kee,陈嘉庚,டான் கா கீ,27-Dec-15,Duchess / Hillcrest / Watten / Kah Kee,TKK,Bukit Timah,—
+DT9  CC19,Botanic Gardens • Kebun Bunga,植物园,பூ மலை,27-Dec-15,Botanic Gardens,BTN,Tanglin,Circle Line
+DT10,Stevens,史蒂芬,ஸ்டீவன்ஸ்,27-Dec-15,Stevens / Whitley / Wayang Satu,STV,"Novena, Tanglin",—
+DT11–NS21,Newton,纽顿,நியூட்டன்,27-Dec-15,Newton,NEW,Newton,North South Line
+DT12  NE7,Little India,小印度,லிட்டில் இந்தியா,27-Dec-15,Little India,LTI,"Kallang, Rochor",North East Line
+DT13,Rochor,梧槽,ரோச்சோர்,27-Dec-15,Rochor / Tekka / Ophir,RCR,Rochor,—
+DT14  EW12,Bugis,武吉士,பூகிஸ்,22-Dec-13,Bugis,BGS,"Downtown Core, Rochor",East West Line
+DT15  CC4,Promenade,宝门廊,புரொமனாட்,22-Dec-13,Promenade,PMN,Downtown Core,"Circle Line
+― 
+ Marina Centre"
+DT16  CE1,Bayfront,海湾舫,பேஃபிரண்ட்,22-Dec-13,Bayfront,BFT,Downtown Core,Circle Line
+DT17,Downtown,市中心,டௌன்டவுன்,22-Dec-13,Landmark / Central Boulevard,DTN,Downtown Core,—
+DT18,Telok Ayer,直落亚逸,தெலுக் ஆயர்,22-Dec-13,Cross Street / Telok Ayer,TLA,"Downtown Core, Outram",—
+DT19  NE4,Chinatown,牛车水,சைனாடவுன்,22-Dec-13,Hong Lim / Chinatown,CNT,Outram,North East Line
+DT20,Fort Canning,福康宁,ஃபோர்ட் கெனிங்,21-Oct-17,River Valley / Fort Canning,FCN,"Museum Planning Area, Singapore River Planning Area",—
+DT21,Bencoolen,明古连,பென்கூலன்,21-Oct-17,Bencoolen / Waterloo,BCL,"Museum Planning Area, Rochor",—
+DT22,Jalan Besar,惹兰勿刹,ஜாலான் புசார்,21-Oct-17,Sungei Road / Jalan Besar,JLB,Rochor,—
+DT23,Bendemeer,明地迷亚,பெண்டிமியர்,21-Oct-17,"Jalan Besar, Bendemeer / Kallang Avenue",BDM,Kallang,—
+DT24,Geylang Bahru,芽笼峇鲁,கேலாங் பாரு,21-Oct-17,"Kallang Bahru, Geylang Bahru / Kolam Ayer",GLB,Kallang,—
+DT25,Mattar,玛达,மாத்தார்,21-Oct-17,Mattar / Merpati,MTR,Geylang,—
+DT26  CC10,MacPherson,麦波申,மெக்பர்சன்,21-Oct-17,MacPherson,MPS,Geylang,Circle Line
+DT27,Ubi,乌美,உபி,21-Oct-17,Ubi / Kampong Ubi,UBI,Geylang,—
+DT28,Kaki Bukit,加基武吉,காக்கி புக்கிட்,21-Oct-17,Kaki Bukit,KKB,Bedok,—
+DT29,Bedok North,勿洛北,பிடோக் நார்த்,21-Oct-17,Bedok Town Park / Bedok North,BDN,Bedok,—
+DT30,Bedok Reservoir,勿洛蓄水池,பிடோக் ரெசவோர்,21-Oct-17,Bedok Reservoir,BDR,Bedok,—
+DT31,Tampines West,淡滨尼西,தெம்பினிஸ் வெஸ்ட்,21-Oct-17,Tampines West,TPW,Tampines,—
+DT32–EW2,Tampines,淡滨尼,தெம்பினிஸ்,21-Oct-17,Tampines,TAM,Tampines,"East West Line 
+― 
+ Tampines
+ Tampines Concourse"
+DT33,Tampines East,淡滨尼东,தெம்பினிஸ் ஈஸ்ட்,21-Oct-17,Tampines East,TPE,Tampines,—
+DT34,Upper Changi,樟宜上段,அப்பர் சாங்கி,21-Oct-17,Upper Changi / Somapah,UPC,Tampines,—
+DT35  CG1,Expo,博览,எக்ஸ்போ,21-Oct-17,Expo,XPO,Tampines,EWL Changi Airport Branch Line
+Downtown Line Stage 3 Extension,Downtown Line Stage 3 Extension,Downtown Line Stage 3 Extension,Downtown Line Stage 3 Extension,Downtown Line Stage 3 Extension,Downtown Line Stage 3 Extension,Downtown Line Stage 3 Extension,Downtown Line Stage 3 Extension,Downtown Line Stage 3 Extension
+—,Xilin,锡林,சீலின்,2024,Xilin,XLN,Tampines,—
+—,Sungei Bedok,双溪勿洛,சங்கை பிடோக்,2024,Sungei Bedok,SGB,Bedok,—
+Thomson–East Coast Line (TEL),Thomson–East Coast Line (TEL),Thomson–East Coast Line (TEL),Thomson–East Coast Line (TEL),Thomson–East Coast Line (TEL),Thomson–East Coast Line (TEL),Thomson–East Coast Line (TEL),Thomson–East Coast Line (TEL),Thomson–East Coast Line (TEL)
+TE1,Woodlands North,兀兰北,உட்லண்ட்ஸ் நார்த்,31-Jan-20,Woodlands North / Republic Polytechnic / Admiralty Park,WDN,Woodlands,—
+TE2  NS9,Woodlands,兀兰,ஊட்லண்ட்ஸ்,31-Jan-20,Woodlands,WDL,Woodlands,"North South Line
+― 
+ Woodlands
+ Woodlands Temporary"
+TE3,Woodlands South,兀兰南,உட்லண்ட்ஸ் சவுத்,31-Jan-20,Woodlands South / Ulu Sembawang / Woodgrove,WDS,Woodlands,—
+TE4,Springleaf,春叶,ஸ்பிரிங்லீஃவ்,28-Aug-21,Springleaf / Nee Soon / Thong Soon,SPL,Yishun,—
+TE5,Lentor,伦多,லென்ட்டோர்,28-Aug-21,Lentor / Ulu Seletar / Teachers' Estate,LTR,Ang Mo Kio,—
+TE6,Mayflower,美华,மேஃபிளவர்,28-Aug-21,Mayflower / Kebun Baru / Ang Mo Kio West,MFL,Ang Mo Kio,—
+TE7,Bright Hill,光明山,பிரைட் ஹில்,28-Aug-21,Sin Ming / Bishan Park / Bright Hill,BRH,Bishan,—
+TE8,Upper Thomson,汤申路上段,அப்பர் தாம்சன்,28-Aug-21,Upper Thomson / Thomson Plaza / Thomson Park,UTS,Bishan,—
+TE9  CC17,Caldecott,加利谷,கால்டிகாட்,28-Aug-21,Caldecott,CDT,Toa Payoh,Circle Line
+Stage 3,Stage 3,Stage 3,Stage 3,Stage 3,Stage 3,Stage 3,Stage 3,Stage 3
+—,Mount Pleasant,快乐山,மவுண்ட் பிளசண்ட்,TBA,Mount Pleasant / Whitley / Onraet,MPL,Novena,—
+DT10,Stevens,史蒂芬,ஸ்டீவன்ஸ்,2022,Stevens,STV,"Novena, Tanglin",Downtown Line
+—,Napier,纳比雅,நேப்பியர்,2022,Napier / Botanic Gardens South / Taman Serasi,NPR,Tanglin,—
+—,Orchard Boulevard,乌节大道,ஆர்ச்சர்ட் பொலிவார்ட்,2022,Orchard Boulevard / Grange Road / Tanglin,OBV,"Orchard Planning Area, River Valley Planning Area",—
+NS22,Orchard,乌节,ஆர்ச்சர்ட்,2022,Orchard,ORC,"Orchard Planning Area, River Valley Planning Area",North South Line
+—,Great World,大世界,கிரேட் வோர்ல்ட்,2022,Great World / Kim Seng / River Valley,GRW,"River Valley Planning Area, Singapore River Planning Area",—
+—,Havelock,合乐,ஹவ்லாக்,2022,Havelock / Bukit Ho Swee / Zion Road,HVL,Bukit Merah,—
+EW16  NE3,Outram Park,欧南园,ஊட்ரம் பார்க்,2022,Outram Park,OTP,"Bukit Merah, Outram","East West Line 
+ North East Line
+― 
+ Kampong Bahru"
+—,Maxwell,麦士威,மெச்ஸ்வெல்,2022,Maxwell / Ann Siang Hill / Neil Road,MAX,"Downtown Core, Outram",—
+—,Shenton Way,珊顿道,ஷென்ட்டன் வே,2022,Shenton Way / Asia Square / McCallum,SHW,Downtown Core,—
+NS27  CE2,Marina Bay,滨海湾,மரீனா பே,2022,Marina Bay,MRB,"Downtown Core, Straits View Planning Area","North South Line 
+ Circle Line"
+—,Marina South,滨海南,மரீனா சவுத்,TBA,Marina South / Straits View / Marina Boulevard,MRS,"Marina South, Straits View Planning Area",—
+—,Gardens by the Bay • Taman di Pesisiran,滨海湾花园,கரையோரப் பூந்தோட்டங்கள்,2022,Gardens by the Bay / Marina Barrage / Marina Gardens,GRB,Marina South,—
+Infill station,Infill station,Infill station,Infill station,Infill station,Infill station,Infill station,Infill station,Infill station
+—,Founders' Memorial • Peringatan Pengasas,建国先贤纪念园,தேச நிறுவனர்கள் நினைவிட நிலையம்,2027,"Gardens Bay East, Marina East",FDM,Marina East,—
+Stage 4,Stage 4,Stage 4,Stage 4,Stage 4,Stage 4,Stage 4,Stage 4,Stage 4
+—,Tanjong Rhu,丹戎禺,தஞ்சோங் ரூ,2024,Tanjong Rhu / Sandy Point,TRH,Kallang,—
+—,Katong Park,加东公园,காத்தோங் பார்க்,2024,Katong Park / Fort Road,KTP,"Kallang, Marine Parade",—
+—,Tanjong Katong,丹戎加东,தஞ்சோங் காத்தோங்,2024,Amber / Tanjong Katong,TKT,Marine Parade,—
+—,Marine Parade,马林百列,மரீன் பரேட்,2024,Marine Parade / Parkway South,MPR,Marine Parade,—
+—,Marine Terrace,马林台,மரீன் டெரஸ்,2024,Marine Terrace / Telok Kurau,MTC,"Bedok, Marine Parade",—
+—,Siglap,实乞纳,சிக்லாப்,2024,Siglap / Siglap South,SGL,Bedok,—
+—,Bayshore,碧湾,பேஷோர்,2024,Bayshore / Bedok Jetty,BSR,Bedok,—
+Stage 5,Stage 5,Stage 5,Stage 5,Stage 5,Stage 5,Stage 5,Stage 5,Stage 5
+—,Bedok South,勿洛南,பிடோக் சவுத்,2025,Bedok South / Upper East Coast,BDS,Bedok,Bedok South
+—,Sungei Bedok,双溪勿洛,சுங்கை பிடோக்,2025,Sungei Bedok / Eastwood,SGB,Bedok,Downtown Line
+Thomson–East Coast Line Extension (TELe),Thomson–East Coast Line Extension (TELe),Thomson–East Coast Line Extension (TELe),Thomson–East Coast Line Extension (TELe),Thomson–East Coast Line Extension (TELe),Thomson–East Coast Line Extension (TELe),Thomson–East Coast Line Extension (TELe),Thomson–East Coast Line Extension (TELe),Thomson–East Coast Line Extension (TELe)
+—,Changi Airport Terminal 5,TBA,TBA,2040,Changi Airport,TBA,Changi,Changi Airport Terminal 5
+CG2,Changi Airport,樟宜机场,சாங்கி விமானநிலையம்,2040,Changi Airport,CGA,Changi,"Changi Airport
+― 
+ Changi Airport Terminals 1-4"
+CG1  DT35,Expo,博览,எக்ஸ்போ,2040,Somapah,XPO,Tampines,Downtown Line
+EW4  CG,Tanah Merah,丹那美拉,தானா மேரா,2040,"Bedok, Changi",TNM,Bedok,East West Line
+Jurong Region Line (JRL),Jurong Region Line (JRL),Jurong Region Line (JRL),Jurong Region Line (JRL),Jurong Region Line (JRL),Jurong Region Line (JRL),Jurong Region Line (JRL),Jurong Region Line (JRL),Jurong Region Line (JRL)
+Stage 1,Stage 1,Stage 1,Stage 1,Stage 1,Stage 1,Stage 1,Stage 1,Stage 1
+NS4  BP1,Choa Chu Kang,蔡厝港,சுவா சூ காங்,2027,Choa Chu Kang,CCK,Choa Chu Kang,"North South Line
+ Bukit Panjang LRT
+―
+ Choa Chu Kang"
+—,Choa Chu Kang West,蔡厝港西,சுவா சூ காங் வெஸ்ட்,2027,Choa Chu Kang West,CKW,Choa Chu Kang,—
+—,Tengah,登加,தெங்கா,2027,Tengah,TGH,Tengah,"JRL East Branch
+― 
+ Tengah"
+—,Hong Kah,丰加,ஹோங் காஹ்,2027,Hong Kah,HGK,Tengah,—
+—,Corporation,企业,கார்ப்பரெஷன்,2027,Corporation,CPN,Jurong West,—
+—,Jurong West,裕廊西,ஜூரோங் வெஸ்ட்,2027,Jurong West,JRW,Jurong West,—
+—,Bahar Junction,峇哈路口,பஹார் சந்திப்பு,2027,Bahar Junction,BHJ,Jurong West,JRL West Branch
+EW27,Boon Lay,文礼,பூன் லே,2027,Boon Lay,BNL,Jurong West,"East West Line
+―
+ Boon Lay"
+—,Gek Poh,玉宝,ஜெக் போ,2027,Gek Poh,GKP,Jurong West,—
+—,Tawas,大华士,தாவாஸ்,2027,Tawas,TWS,Western Water Catchment,—
+Stage 2,Stage 2,Stage 2,Stage 2,Stage 2,Stage 2,Stage 2,Stage 2,Stage 2
+—,Tengah Plantation,登加种植,தெங்கா தோட்டம்,2028,Tengah Plantation,TGP,Tengah,—
+—,Tengah Park,登加公园,தெங்கா பூங்கா,2028,Tengah Park,TGK,"Bukit Batok, Tengah",—
+—,Bukit Batok West,武吉巴督西,புக்கிட் பாத்தோக் வெஸ்ட்,2028,Bukit Batok West,BBW,"Bukit Batok, Jurong East",—
+—,Toh Guan,卓源,டோ குவான்,2028,Toh Guan,TGN,Jurong East,—
+NS1  EW24,Jurong East,裕廊东,ஜூரோங் கிழக்கு,2028,Jurong East,JUR,Jurong East,"North South Line
+ East West Line
+―
+ Jurong East"
+—,Jurong Town Hall,裕廊镇大会堂,ஜுராங் டவுன் ஹால்,2028,Jurong Town Hall,JTH,Jurong East,—
+—,Pandan Reservoir,班丹蓄水池,பாண்டன் ரெசவோர்,2028,Pandan Reservoir,PDR,Jurong East,—
+Stage 3,Stage 3,Stage 3,Stage 3,Stage 3,Stage 3,Stage 3,Stage 3,Stage 3
+—,Enterprise,事业,எண்டர்பிரைஸ்,2029,Enterprise,ETP,Jurong West,—
+—,Tukang,都康,துக்காங்,2029,Tukang,TKN,Boon Lay,—
+—,Jurong Hill,裕廊山,ஜூரோங் ஹில்,2029,Jurong Hill,JRH,Boon Lay,—
+—,Jurong Pier,裕廊渡头,ஜூரோங் பியர்,2029,Jurong Pier,JRP,"Boon Lay, Jurong East",—
+—,Nanyang Gateway,南洋门,நன்யாங் கேட்வே,2029,Nanyang Gateway,NYG,Western Water Catchment,—
+—,Nanyang Crescent,南洋弯,நன்யாங் க்ரெஸ்ஸன்,2029,Nanyang Crescent,NYC,Western Water Catchment,—
+—,Peng Kang Hill,秉光山,பெங் காங் ஹில்,2029,Peng Kang Hill,PKH,Western Water Catchment,—
+West Coast Extension,West Coast Extension,West Coast Extension,West Coast Extension,West Coast Extension,West Coast Extension,West Coast Extension,West Coast Extension,West Coast Extension
+CC25,Haw Par Villa,虎豹别墅,ஹா பர் வில்லா,TBA,Haw Par Villa,HPV,Queenstown,Circle Line
+Cross Island Line (CRL),Cross Island Line (CRL),Cross Island Line (CRL),Cross Island Line (CRL),Cross Island Line (CRL),Cross Island Line (CRL),Cross Island Line (CRL),Cross Island Line (CRL),Cross Island Line (CRL)
+Stage 1,Stage 1,Stage 1,Stage 1,Stage 1,Stage 1,Stage 1,Stage 1,Stage 1
+—,Changi Airport Terminal 5,TBA,TBA,TBA,[d],TBA,Changi,Changi Airport Terminal 5
+—,Aviation Park,航空园,ஏவியேஷ பார்க்,2030,Aviation Park,AVP,Changi,Changi Ferry Terminal
+—,Loyang,罗央,லோயாங்,2030,Loyang,LYG,Pasir Ris,—
+—,Pasir Ris East,巴西立东,பாசிர் ரிஸ் ஈஸ்ட்,2030,Pasir Ris East,PRE,Pasir Ris,—
+EW1,Pasir Ris,巴西立,பாசிர் ரிஸ்,2030,Pasir Ris,PSR,Pasir Ris,"East West Line
+―
+ Pasir Ris"
+—,Tampines North,淡滨尼北,தெம்பினிஸ் நார்த்,2030,Tampines North,TPN,Tampines,Tampines North
+—,Defu,德福,டெஃபு,2030,"Defu, Tampines Road",DFU,Hougang,—
+NE14,Hougang,后港,ஹவ்காங்,2030,Hougang,HGN,Hougang,"North East Line
+―
+ Hougang Central"
+—,Serangoon North,实龙岗北,சிராங்கூன் நார்த்,2030,Serangoon North,SRN,"Hougang, Serangoon",—
+—,Tavistock,达维士笃,தெவிஸ்தொக்,2030,Tavistock,TVK,Serangoon,—
+NS16,Ang Mo Kio,宏茂桥,அங் மோ கியோ,2030,Ang Mo Kio,AMK,Ang Mo Kio,"North South Line
+―
+ Ang Mo Kio"
+—,Teck Ghee,德义,டெக் கீ,2030,Teck Ghee,TGE,"Ang Mo Kio, Bishan",—
+TE7,Bright Hill,光明山,பிரைட் ஹில்,2030,Bright Hill,BRH,Bishan,Thomson–East Coast Line
+Punggol Extension (CRLe),Punggol Extension (CRLe),Punggol Extension (CRLe),Punggol Extension (CRLe),Punggol Extension (CRLe),Punggol Extension (CRLe),Punggol Extension (CRLe),Punggol Extension (CRLe),Punggol Extension (CRLe)
+—,Elias,伊莱雅,இலியாஸ்,2032,Elias,PRL,Pasir Ris,—
+PE4,Riviera,里维拉,ரிவியாரா,2032,Riviera,RIV,Punggol,PGLRT East Loop
+NE17  PTC,Punggol,榜鹅,பொங்கோல்,2032,Punggol,PGL,Punggol,"North East Line
+ Punggol LRT
+―
+ Punggol"
