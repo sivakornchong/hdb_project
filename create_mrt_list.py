@@ -39,7 +39,7 @@ dst = open(args['dst'], 'w')
         
 for mrt in mrt_list:
     try:
-        print(mrt)
+        #print(mrt)
         query_string='https://developers.onemap.sg/commonapi/search?searchVal={}&returnGeom=Y&getAddrDetails=Y&pageNum=1'.format(mrt)
         resp = requests.get(query_string)
         data = json.loads(resp.content)
@@ -48,8 +48,7 @@ for mrt in mrt_list:
         longitude = chosen_result['LONGITUDE']
         labelled_data = {
             'MRT': mrt,
-            'latitude': latitude,
-            'longitude': longitude
+            'location': (latitude, longitude)
         }
         json_data = json.dumps(labelled_data)
         mrt_count+=1
