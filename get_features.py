@@ -1,6 +1,6 @@
 import json
 import requests
-from misc_fn import nearest_mrt
+from misc_fn import nearest_mrt, numerical
 import time
 
 count, fail_count = 0, 0 
@@ -25,7 +25,6 @@ with open('data/data_source.json', 'r') as file:
             item = json.loads(line)
             search_term = item['block']+" "+item['street_name']
             # print(search_term)
-            count += 1
             #Query for the lat/ long
             query_string='https://developers.onemap.sg/commonapi/search?searchVal={}&returnGeom=Y&getAddrDetails=Y&pageNum=1'.format(search_term)
             resp = requests.get(query_string)
@@ -33,32 +32,40 @@ with open('data/data_source.json', 'r') as file:
             chosen_result = data['results'][0]
             #Calculate the nearest MRT
             distance_km, nearest_mr = nearest_mrt(chosen_result['LATITUDE'], chosen_result['LONGITUDE'], mrt_name, mrt_loc)
+            town_num, flat_num, age, transaction, storey = numerical(item)
             # print(data)
             labelled_data = {
-                'Location': search_term,
-                'Postal': chosen_result['POSTAL'],
-                'latitude': chosen_result['LATITUDE'],
-                'longitude': chosen_result['LONGITUDE'],
                 'distance_mrt': distance_km,
-                'nearest_mrt': nearest_mr,
-                'resale_info': item
+                'town': town_num,
+                'flat_num': flat_num,
+                'age_transation': age,
+                'lease_commence': item['lease_commence_date'],
+                'transaction_yr': transaction,
+                'storey_height': storey,
+                #find age at translation
+                # 'resale_info': item,
+                'Postal': chosen_result['POSTAL'],
+                'Location': search_term
             }
             json_data = json.dumps(labelled_data)
             dst.write(json_data+"\n")
+            count += 1
+
+            if count % 100 == 0:
+                et = time.time()
+                time_elapsed = et - st
+                print('Iterating successful to count:', count)
+                print('Current fail count:', fail_count)
+                print('time_elapsed', time_elapsed, 'seconds')
+                print("sample")
+                print(labelled_data)
 
         except Exception as e:
             print('error as', e)
             fail_count += 1
         
-        if count % 100 == 0:
-            et = time.time()
-            time_elapsed = et - st
-            print('Iterating successful to count:', count)
-            print('Current fail count:', fail_count)
-            print('time_elapsed', time_elapsed, 'seconds')
-            print("sample")
-            print(distance_km)
-            print(nearest_mr)
+        if count>1:
+            break
 
 print('='*100)
 print('successful house search, location added:', count)
