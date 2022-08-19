@@ -1,12 +1,13 @@
 import json
 import requests
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 
+limit = 500
+query_string='https://data.gov.sg/api/action/datastore_search?resource_id=f1765b54-a209-4718-8d38-a39237f502b3&limit='
+query_obj = query_string+str(limit)
 
-query_string='https://data.gov.sg/api/action/datastore_search?resource_id=f1765b54-a209-4718-8d38-a39237f502b3&limit=500'
-resp = requests.get(query_string)
+print(query_obj)
+
+resp = requests.get(query_obj)
 
 data = json.loads(resp.content)
 # print(type(data))
@@ -17,7 +18,7 @@ list_house = data['result']['records']
 counter = 0
 args = {
     'script': 'default',
-    'dst':'data_source.json',
+    'dst':'data/data_source.json',
 }
 
 dst = open(args['dst'], 'w')

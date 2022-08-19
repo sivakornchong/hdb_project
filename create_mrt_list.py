@@ -5,7 +5,7 @@ import pandas as pd
 from misc_fn import is_date
 
 #This section is to extract the MRT station full names for searching on API
-df = pd.read_csv('MRT_from_wiki.csv')
+df = pd.read_csv('data/MRT_from_wiki.csv')
 df_mrt = df[['Code','Name', 'Opening', 'Abbreviation']].copy()
 df_mrt['is_date'] = df_mrt.apply(lambda row: is_date(row['Opening']), axis=1)
 
@@ -32,7 +32,7 @@ mrt_count = 0
 
 args = {
     'script': 'default',
-    'dst':'mrt_list.json',
+    'dst':'data/mrt_list.json',
 }
 
 dst = open(args['dst'], 'w')

@@ -1,14 +1,17 @@
 import json
 import requests
 from misc_fn import nearest_mrt
+import time
 
 count, fail_count = 0, 0 
-dst = open('data_w_coord.json', 'w')
+dst = open('data/data_w_coord.json', 'w')
+
+st = time.time()
 
 ###This is to create MRT names and MRT locations
 mrt_name = []
 mrt_loc = []
-with open('mrt_list.json', 'r') as file:
+with open('data/mrt_list.json', 'r') as file:
     for line in file:
         item = json.loads(line)
         mrt_name.append(item['MRT'])
@@ -16,7 +19,7 @@ with open('mrt_list.json', 'r') as file:
         mrt_loc.append(loc)
 
 
-with open('data_source.json', 'r') as file:
+with open('data/data_source.json', 'r') as file:
     for line in file:
         try:
             item = json.loads(line)
@@ -48,8 +51,11 @@ with open('data_source.json', 'r') as file:
             fail_count += 1
         
         if count % 100 == 0:
+            et = time.time()
+            time_elapsed = et - st
             print('Iterating successful to count:', count)
             print('Current fail count:', fail_count)
+            print('time_elapsed', time_elapsed, 'seconds')
             print("sample")
             print(distance_km)
             print(nearest_mr)
