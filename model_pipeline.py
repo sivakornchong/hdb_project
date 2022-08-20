@@ -52,53 +52,36 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_squared_error
 
 # Decision tree
-x_axis= []
-y_axis = []
-for i in range(25,35):
-    dt = DecisionTreeRegressor(max_depth=i,random_state=27)
-    dt.fit(X_train,y_train)
-    pred = dt.predict(X_test)
-    rmse = np.sqrt(mean_squared_error(y_test,pred))
-    #print('rmse for decision tree, OneHot, normalized:', rmse)
-    x_axis.append(i)
-    y_axis.append(rmse)
-
-min_rmse = min(y_axis)
-min_depth = x_axis[y_axis.index(min_rmse)]
-print('rmse for decision tree, OneHot, normalized:', min_rmse, 'at depth =', min_depth)
+dt = DecisionTreeRegressor(max_depth=30,random_state=27)
+dt.fit(X_train,y_train)
+pred = dt.predict(X_test)
+rmse = np.sqrt(mean_squared_error(y_test,pred))
+print('rmse for decision tree, OneHot, normalized:', rmse)
 
 ###This is better than without OneHOT, but need a deeper network (depth = 40)
 
 
 #Trying out without normalization. 
-x_axis = []
-y_axis = []
 X_train_raw, X_test_raw, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
-for i in range(25,35):
-    dt = DecisionTreeRegressor(max_depth=30,random_state=27)
-    dt.fit(X_train_raw,y_train)
-    pred = dt.predict(X_test_raw)
-    rmse = np.sqrt(mean_squared_error(y_test,pred))
-    #print('rmse for decision tree, OneHot, not normalized:', rmse)
-    x_axis.append(i)
-    y_axis.append(rmse)
+dt = DecisionTreeRegressor(max_depth=30,random_state=27)
+dt.fit(X_train_raw,y_train)
+pred = dt.predict(X_test_raw)
+rmse = np.sqrt(mean_squared_error(y_test,pred))
+print('rmse for decision tree, OneHot, not normalized:', rmse)
 
-min_rmse = min(y_axis)
-min_depth = x_axis[y_axis.index(min_rmse)]
-print('rmse for decision tree, OneHot, not normalized:', min_rmse, 'at depth =', min_depth)
 
+## Normalized is better than not normalized. 
+### rmse for decision tree, OneHot, normalized: 48183.6039776432
+### rmse for decision tree, OneHot, not normalized: 48263.32833187279
 
 #Trying out knn algorihtm
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.metrics import mean_squared_error
 knn = KNeighborsRegressor(algorithm='auto')
 knn.fit(X_train,y_train)
 predictions = knn.predict(X_test)
+
+from sklearn.metrics import mean_squared_error
 mse = mean_squared_error(y_test, predictions)
 rmse = mse ** (1/2)
 print('rmse for KNN, OneHot, normalized:', rmse)
 
-###Performance compiled: normalized OneHot is the best. 
-#rmse for decision tree, OneHot, normalized: 36201.34658490505 at depth = 30
-# rmse for decision tree, OneHot, not normalized: 35896.29191019776
-# rmse for KNN, OneHot, normalized: 36065.8015334932

@@ -3,9 +3,10 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OrdinalEncoder, MinMaxScaler
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 # load the dataset
-dataset = pd.read_json('data/data_features_10k.json', lines= True)
+dataset = pd.read_json('data/data_features.json', lines= True)
 columns = ['distance_mrt','age_transation','lease_commence',\
     'transaction_yr','storey_height', 'resale_price_adj']
 
@@ -34,7 +35,7 @@ X = np.concatenate((X, X_cat), axis=1)
 # print('Input', X.shape)
 # print(X[:5, :])
 print('Output', y.shape)
-print(y[:5])
+# print(y[:5])
 
 #Run normalize
 # fit scaler on training data
@@ -42,7 +43,7 @@ norm = MinMaxScaler().fit(X)
 X_norm = norm.transform(X)
 
 print('Input', X_norm.shape)
-print(X_norm[:5, :])
+# print(X_norm[:5, :])
 
 ##Run decision tree algorihtm
 X_train, X_test, y_train, y_test = train_test_split(X_norm, y, test_size=0.1, random_state=42)
@@ -53,15 +54,32 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_squared_error
 
 # Decision tree
-dt = DecisionTreeRegressor(max_depth=10,random_state=27)
-dt.fit(X_train,y_train)
-pred = dt.predict(X_test)
+x_axis= []
+y_axis = []
+for i in range(1,50,3):
+    dt = DecisionTreeRegressor(max_depth=i,random_state=27)
+    dt.fit(X_train,y_train)
+    pred = dt.predict(X_test)
+    rmse = np.sqrt(mean_squared_error(y_test,pred))
+    # print('rmse for decision tree, ORD, normalized:', rmse)
+    x_axis.append(i)
+    y_axis.append(rmse)
+
+min_rmse = min(y_axis)
+print(min(y_axis))
+print(x_axis[y_axis.index(min_rmse)])
+
+# plt.plot(x_axis, y_axis)
+# #set title and x, y - axes labels
+# plt.title('rmse for decision tree, ORD, normalized')
+# plt.xlabel('max-depth')
+# plt.ylabel('RMSE')
+# plt.show()
+
 # print(pred)
 # print(type(pred))
 # print(y_test)
 # print(type(y_test))
 
-rmse = np.sqrt(mean_squared_error(y_test,pred))
-print(rmse)
 
 
