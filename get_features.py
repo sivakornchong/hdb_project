@@ -4,7 +4,7 @@ from misc_fn import nearest_mrt, numerical
 import time
 
 count, fail_count = 0, 0 
-dst = open('data/data_features_10k.json', 'w')
+dst = open('data/data_features.json', 'w')
 
 st = time.time()
 
@@ -19,7 +19,7 @@ with open('data/mrt_list.json', 'r') as file:
         mrt_loc.append(loc)
 
 
-with open('data/data_source_10k.json', 'r') as file:
+with open('data/data_source.json', 'r') as file:
     for line in file:
         try:
             item = json.loads(line)

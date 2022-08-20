@@ -4,7 +4,7 @@ from sklearn.preprocessing import OrdinalEncoder, MinMaxScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
 
 # load the dataset
-dataset = pd.read_json('data/data_features_10k.json', lines= True)
+dataset = pd.read_json('data/data_features.json', lines= True)
 columns = ['distance_mrt','age_transation','lease_commence',\
     'transaction_yr','storey_height', 'resale_price_adj']
 
@@ -25,7 +25,7 @@ y = data[:, -1]
 
 onehot_encoder = OneHotEncoder(sparse=False)
 X_cat = onehot_encoder.fit_transform(data_cat.astype(str))
-print(X_cat.shape)
+print('Cat X input after OneHot', X_cat.shape)
 
 X = np.concatenate((X, X_cat), axis=1)
 
@@ -33,7 +33,7 @@ X = np.concatenate((X, X_cat), axis=1)
 # print('Input', X.shape)
 # print(X[:5, :])
 print('Output', y.shape)
-print(y[:5])
+# print(y[:5])
 
 #Run normalize
 # fit scaler on training data
@@ -41,7 +41,7 @@ norm = MinMaxScaler().fit(X)
 X_norm = norm.transform(X)
 
 print('Input', X_norm.shape)
-print(X_norm[:5, :])
+# print(X_norm[:5, :])
 
 ##Run decision tree algorihtm
 X_train, X_test, y_train, y_test = train_test_split(X_norm, y, test_size=0.1, random_state=42)

@@ -1,7 +1,7 @@
 import json
 import requests
 
-limit = 10000
+limit = 200000
 query_string='https://data.gov.sg/api/action/datastore_search?resource_id=f1765b54-a209-4718-8d38-a39237f502b3&limit='
 query_obj = query_string+str(limit)
 
@@ -18,7 +18,7 @@ list_house = data['result']['records']
 counter = 0
 args = {
     'script': 'default',
-    'dst':'data/data_source_10k.json',
+    'dst':'data/data_source.json',
 }
 
 dst = open(args['dst'], 'w')
