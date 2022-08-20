@@ -67,8 +67,6 @@ with open('data/data_source_10k.json', 'r') as file:
             print('error as', e)
             fail_count += 1
         
-        if count>1:
-            break
 
 print('='*100)
 print('successful house search, location added:', count)
