@@ -4,7 +4,7 @@ from misc_fn import nearest_mrt, numerical
 import time
 
 count, fail_count = 0, 0 
-dst = open('data/data_w_coord.json', 'w')
+dst = open('data/data_features_10k.json', 'w')
 
 st = time.time()
 
@@ -19,7 +19,7 @@ with open('data/mrt_list.json', 'r') as file:
         mrt_loc.append(loc)
 
 
-with open('data/data_source.json', 'r') as file:
+with open('data/data_source_10k.json', 'r') as file:
     for line in file:
         try:
             item = json.loads(line)
@@ -32,7 +32,7 @@ with open('data/data_source.json', 'r') as file:
             chosen_result = data['results'][0]
             #Calculate the nearest MRT
             distance_km, nearest_mr = nearest_mrt(chosen_result['LATITUDE'], chosen_result['LONGITUDE'], mrt_name, mrt_loc)
-            town_num, flat_num, age, transaction, storey = numerical(item)
+            town_num, flat_num, age, transaction, storey, resale_price_adj = numerical(item)
             # print(data)
             labelled_data = {
                 'distance_mrt': distance_km,
@@ -41,7 +41,10 @@ with open('data/data_source.json', 'r') as file:
                 'age_transation': age,
                 'lease_commence': item['lease_commence_date'],
                 'transaction_yr': transaction,
+                'transaction': item['month'],
                 'storey_height': storey,
+                'resale_price': item['resale_price'],
+                'resale_price_adj': resale_price_adj,
                 #find age at translation
                 # 'resale_info': item,
                 'Postal': chosen_result['POSTAL'],
