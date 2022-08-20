@@ -76,10 +76,7 @@ print(x_axis[y_axis.index(min_rmse)])
 # plt.ylabel('RMSE')
 # plt.show()
 
-# print(pred)
-# print(type(pred))
-# print(y_test)
-# print(type(y_test))
+###min rmse at max depth = 19, rsme = 36288###
 
 
 

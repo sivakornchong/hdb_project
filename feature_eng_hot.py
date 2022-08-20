@@ -100,5 +100,5 @@ print('rmse for KNN, OneHot, normalized:', rmse)
 
 ###Performance compiled: normalized OneHot is the best. 
 #rmse for decision tree, OneHot, normalized: 36201.34658490505 at depth = 30
-# rmse for decision tree, OneHot, not normalized: 35896.29191019776
+#rmse for decision tree, OneHot, not normalized: 35896.29191019776 at depth = 25
 # rmse for KNN, OneHot, normalized: 36065.8015334932
