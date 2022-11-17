@@ -4,7 +4,7 @@ from misc_fn import nearest_mrt, numerical
 import time
 
 count, fail_count = 0, 0 
-dst = open('data/data_features.json', 'w')
+dst = open('data/data_features_new.json', 'w')
 
 st = time.time()
 
@@ -32,11 +32,12 @@ with open('data/data_source.json', 'r') as file:
             chosen_result = data['results'][0]
             #Calculate the nearest MRT
             distance_km, nearest_mr = nearest_mrt(chosen_result['LATITUDE'], chosen_result['LONGITUDE'], mrt_name, mrt_loc)
-            town_num, flat_num, age, transaction, storey, resale_price_adj = numerical(item)
+            town_num, flat_num, area, age, transaction, storey, resale_price_adj = numerical(item)
             # print(data)
             labelled_data = {
                 'distance_mrt': distance_km,
                 'town': town_num,
+                'area': area,
                 'flat_num': flat_num,
                 'age_transation': age,
                 'lease_commence': item['lease_commence_date'],

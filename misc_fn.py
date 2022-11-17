@@ -44,6 +44,7 @@ RPI_dict = {'2Q2022': 163.9, '1Q2022': 159.5, '4Q2021': 155.7, '3Q2021': 150.6, 
 def numerical(item):
     town_num = item['town']
     flat_num = item['flat_type']
+    area = item['floor_area_sqm']
     storey = storey_dict[item['storey_range']]
     datetime_lease = datetime.strptime(item['lease_commence_date'], '%Y').year
     datetime_transaction = datetime.strptime(item['month'], '%Y-%m')
@@ -53,7 +54,7 @@ def numerical(item):
     price = int(item['resale_price'])
     resale_price_adj = price_adj(price,qrtr_transaction)
     age = year_transaction - datetime_lease
-    return town_num, flat_num, age, year_transaction, storey, resale_price_adj
+    return town_num, flat_num, area, age, year_transaction, storey, resale_price_adj
 
 
 def price_adj(price, qrtr_transaction):
