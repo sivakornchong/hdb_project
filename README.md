@@ -12,7 +12,7 @@ Block 1 - API, get features
     2. get_features.py - Add further information for each flat. Data_source.json translated to data_features.json
 
 
-Block 2 - Backend calculation
+Block 2 - Feature engineering, model training and selection
     3. feature_train.ipynb  This is for feature engineering and model training
 
     Retired codes
@@ -21,7 +21,5 @@ Block 2 - Backend calculation
     3c. feature_eng_ord.py  Backup file with just decision tree regressor
     
 
-Block 3 - Visualization
-    4. 
-
-Block 4 - Predictive analysis: price of new launch at MOP
+Block 3 - Model deployment: price of new launch at MOP
+Source code stored at: https://huggingface.co/spaces/sivakornchong/HDB_resale_predict 
