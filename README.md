@@ -1,9 +1,9 @@
 # hdb_project
 
-Intent: 
-- Identify the profit for selling new HDB flat at MOP for certain estates.
-- Compare to sentimental analysis (which are more hot -> can be taken from the bid ratio of each plot in the area)
-
+Intent:
+To develop a reliable housing price predictor for buyers to negotiate better in a hot seller market. 
+o	Booming property market in Singapore has resulted in a spike in resale prices of HDB flats. Many owners take opportunity to price their house at a large premium on the market.
+o	It is difficult for buyers to know the intrinsic (sensible) price.
 
 Code:
 Block 1 - API, get features
