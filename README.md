@@ -1,4 +1,5 @@
 # hdb_project
+Presentation on YouTube:  https://youtu.be/VdJmz-8A9u0  
 
 Intent:
 To develop a reliable housing price predictor for buyers to negotiate better in a hot seller market. 
