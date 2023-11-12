@@ -1,36 +1,32 @@
 import json
 import requests
+import pandas as pd
 
-limit = 200000
-query_string='https://data.gov.sg/api/action/datastore_search?resource_id=f1765b54-a209-4718-8d38-a39237f502b3&limit='
-query_obj = query_string+str(limit)
+#Creating an empty dataframe to store
+alldata = pd.DataFrame()
 
-print(query_obj)
+resource_id = "f1765b54-a209-4718-8d38-a39237f502b3"  # This resource ID is for 2017 onwards. 
+url = "https://data.gov.sg/api/action/datastore_search"
+params = {'resource_id':resource_id, 'limit':10000}
 
-resp = requests.get(query_obj)
+#Initial query to obtain the total number
+r = requests.get(url, params=params)
+data = json.loads(r.content)
+total = data['result']['total']
 
-data = json.loads(resp.content)
-# print(type(data))
+pages = total//10000
+for page in range(pages+1):
+    offset = page*10000
+    params = {'offset': offset, 'resource_id':resource_id, 'limit':10000}
+    print("Retrieving approximately {} records out of {}.".format(offset,total))
+    r = requests.get(url, params=params)
+    data = json.loads(r.content)
+    df = pd.DataFrame(data['result']['records'])
+    alldata = pd.concat([alldata, df], axis=0)
 
-#extract out the housing information
-list_house = data['result']['records']
+alldata = alldata.drop_duplicates()
+alldata.reset_index(inplace=True)
 
-counter = 0
-args = {
-    'script': 'default',
-    'dst':'data/data_source.json',
-}
-
-dst = open(args['dst'], 'w')
-
-for house in list_house:
-    labelled_data = house
-    try:
-        json_data = json.dumps(labelled_data)
-        dst.write(json_data+"\n")
-        counter += 1
-    except Exception as e:
-        print('Error in writing to source JSON', e)
-
-print('total number of resale houses since 2017 is:', counter)
+#Save as intermediary file in data folder
+alldata.to_json('data/data_source.json', orient='records', lines=True)
 print('Export to .json completed, ready for dataframe manipulation')
