@@ -1,4 +1,4 @@
-# hdb_project
+# Singapore Public Housing Price Prediction Project
 Presentation on YouTube:  https://youtu.be/VdJmz-8A9u0  
 
 Intent:
@@ -17,9 +17,9 @@ Block 2 - Feature engineering, model training and selection
     3. feature_train.ipynb  This is for feature engineering and model training
 
     Retired codes
-    3b. feature_eng_hot.py  BACKUP This includes model training with OneHot. 
+    3b. feature_eng_hot.py  Backup: This includes model training with OneHot. 
     Three algorithms are tested.
-    3c. feature_eng_ord.py  Backup file with just decision tree regressor
+    3c. feature_eng_ord.py  Backup: file with just decision tree regressor
     
 
 Block 3 - Model deployment: price of new launch at MOP
