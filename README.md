@@ -7,6 +7,7 @@ To develop a reliable housing price predictor for buyers to negotiate better in 
 -	It is difficult for buyers to know the intrinsic (sensible) price.
 
 Code:
+
 Block 1 - API, get features
     1. connect_api.py - obtain information from the api on all the resale flats. Write to data_source.json
     1a. create_mrt_list.py - create mrt list from wikipedia table in MRT_from_wiki.csv. Write to mrt_list.json.
