@@ -15,11 +15,12 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import RandomizedSearchCV
 import xgboost as xgb
 
-import os
-import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+# import os
+# import sys
+# sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+print("Proceeding to optimizing a regression model")
 
-df = pd.read_json('../data/test_pipe/data_features.json', lines= True)
+df = pd.read_json('data/2024_pipe/data_features.json', lines= True)
 df = df.sample(frac=1)  # To use all data, put frac = 1
 
 # Data preprocessing to select out the relevant columns
@@ -80,10 +81,11 @@ pipe_xgb_opt = make_pipeline(
 pipe_xgb_opt.fit(X_train,y_train)
 
 # Test of the test datasets
+print(f"Utilizing the xgbregressor model with max_depth at {opt_params['xgbregressor__max_depth']} and gamama at {opt_params['xgbregressor__gamma']}")
 print("Final model score on test dataset is:", pipe_xgb_opt.score(X_test, y_test))
 
 # save the xgb model to disk
 import pickle
-filename = '../model/finalized_model2.sav'
+filename = 'model/finalized_model2.sav'
 pickle.dump(pipe_xgb_opt, open(filename, 'wb'))
 print("Model file saved")

@@ -39,7 +39,7 @@ def nearest_mrt(lat, long, mrt_name, mrt_loc):
             nearest_mr = mrt
             distance_km = distance_cal
         count += 1
-    return distance_km, nearest_mr
+    return distance_km
 
 #towndict = {'ANG MO KIO': 1,'BEDOK': 2,'BISHAN': 3,'BUKIT BATOK': 4,'BUKIT MERAH': 5,'BUKIT PANJANG': 6,'BUKIT TIMAH': 7,'CENTRAL AREA': 8,'CHOA CHU KANG': 9,'CLEMENTI': 10,'GEYLANG': 11,'HOUGANG': 12,'JURONG EAST': 13,'JURONG WEST': 14,'KALLANG/WHAMPOA': 15,'MARINE PARADE': 16,'PASIR RIS': 17,'PUNGGOL': 18,'QUEENSTOWN': 19,'SEMBAWANG': 20,'SENGKANG': 21,'SERANGOON': 22,'TAMPINES': 23,'TOA PAYOH': 24,'WOODLANDS': 25,'YISHUN': 26,}
 #flat_typedict = {'1 ROOM': 1,'2 ROOM': 2,'3 ROOM': 3,'4 ROOM': 4,'5 ROOM': 5,'EXECUTIVE': 6,'MULTI-GENERATION': 7,}
@@ -50,7 +50,7 @@ def numerical(item):
     flat_num = item['flat_type']
     area = item['floor_area_sqm']
     storey = storey_dict[item['storey_range']]
-    datetime_lease = datetime.strptime(item['lease_commence_date'], '%Y').year
+    datetime_lease = datetime.strptime(str(item['lease_commence_date']), '%Y').year
     datetime_transaction = datetime.strptime(item['month'], '%Y-%m')
     year_transaction = datetime_transaction.year
     quarter_transaction = math.ceil(datetime_transaction.month/3.0)
