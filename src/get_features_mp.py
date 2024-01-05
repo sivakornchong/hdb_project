@@ -1,3 +1,5 @@
+## To fix this to use https://www.kaggle.com/code/rayhanlahdji/geocoding-singapore-flats-reusable-output instead. 
+
 import json
 import requests
 from multiprocessing.dummy import Pool as ThreadPool
