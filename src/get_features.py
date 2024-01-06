@@ -43,6 +43,16 @@ print('Number of non-unique rows with location information ready:', df_combined.
 
 unique_locations = df_remaining[['town', 'Location']].drop_duplicates().reset_index(drop = True)
 
+###This is to create MRT names and MRT locations
+mrt_name = []
+mrt_loc = []
+with open('data/mrt_list.json', 'r') as file:
+    for line in file:
+        item = json.loads(line)
+        mrt_name.append(item['MRT'])
+        loc = tuple([float(i) for i in item['location']])
+        mrt_loc.append(loc)
+
 # Find the geopy information for the unique remaining locations
 geocoding_queries = {}
 
@@ -54,17 +64,6 @@ for i in range(len(unique_locations)):
 geocoding_results = {}
 for street_name, town in tqdm(geocoding_queries.items()):
     geocoding_results[street_name] = geocode(street_name, town)
-
-###This is to create MRT names and MRT locations
-
-mrt_name = []
-mrt_loc = []
-with open('data/mrt_list.json', 'r') as file:
-    for line in file:
-        item = json.loads(line)
-        mrt_name.append(item['MRT'])
-        loc = tuple([float(i) for i in item['location']])
-        mrt_loc.append(loc)
 
 mrt_results = {}
 for street_name, town in geocoding_queries.items():
