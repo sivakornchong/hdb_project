@@ -5,6 +5,7 @@ from geopy.extra.rate_limiter import RateLimiter
 from tqdm import tqdm
 import json
 from misc_fn import nearest_mrt, numerical
+import requests
 
 # Rate-limit our requests since we're going to geocode
 # many rows at once. Don't want to overwhelm the server-side!
@@ -30,7 +31,7 @@ def postal_from_address(output):
 # Create a unique dataframe for each address
 df_full = pd.read_json('data/2023_pipe/data_features.json', lines=True)
 unique_location_full = df_full[['Location', 'distance_mrt', 'Postal']].drop_duplicates().reset_index(drop = True)
-unique_location_full_test = unique_location_full[unique_location_full['Location']!='406 ANG MO KIO AVE 10']  # Removing one row to test the API
+unique_location_full_test = unique_location_full[unique_location_full['Location']!='406 ANG MO KIO AVE 10']  # Removing one row to test the API is working
 
 df_query = pd.read_json('data/2024_pipe/data_source.json', lines=True)
 df_query['Location'] = df_query['block']+ " " + df_query['street_name']
@@ -38,7 +39,7 @@ df_query['Location'] = df_query['block']+ " " + df_query['street_name']
 df_combined = pd.merge(df_query, unique_location_full_test, on='Location', how='left')
 df_remaining = df_combined[df_combined['distance_mrt'].isna()].copy()
 df_combined = df_combined[~df_combined['distance_mrt'].isna()].copy()
-print('Number of non-unique rows to be queried via Geopy API for location:', df_remaining.shape[0])
+print('Number of non-unique rows to be queried via Onemap API for location:', df_remaining.shape[0])
 print('Number of non-unique rows with location information ready:', df_combined.shape[0])
 
 unique_locations = df_remaining[['town', 'Location']].drop_duplicates().reset_index(drop = True)
@@ -53,7 +54,30 @@ with open('data/mrt_list.json', 'r') as file:
         loc = tuple([float(i) for i in item['location']])
         mrt_loc.append(loc)
 
-# Find the geopy information for the unique remaining locations
+# # Find the geopy information for the unique remaining locations
+# geocoding_queries = {}
+
+# for i in range(len(unique_locations)):
+#     address = unique_locations.loc[i, 'Location']
+#     town = unique_locations.loc[i, 'town']
+#     geocoding_queries[address] = town
+
+# geocoding_results = {}
+# for street_name, town in tqdm(geocoding_queries.items()):
+#     geocoding_results[street_name] = geocode(street_name, town)
+
+# mrt_results = {}
+# for street_name, town in geocoding_queries.items():
+#     mrt_results[street_name] = nearest_mrt(geocoding_results[street_name].latitude, geocoding_results[street_name].longitude, mrt_name, mrt_loc)
+
+# # Fill the dataset with latitude and longitude information from the
+# # geocoding results
+# df_remaining['Postal'] = df_remaining['Location'].apply(lambda x: postal_from_address(geocoding_results[x]))
+# df_remaining['distance_mrt'] = df_remaining['Location'].apply(lambda x: mrt_results[x])
+# print("Successfully calculated MRT distances")
+
+# For a more consistency with the past data (2023), let us use the Onemap API instead
+        
 geocoding_queries = {}
 
 for i in range(len(unique_locations)):
@@ -61,22 +85,30 @@ for i in range(len(unique_locations)):
     town = unique_locations.loc[i, 'town']
     geocoding_queries[address] = town
 
+print("Using Onemap API for query off location (latitude, longitude, postal code)")
 geocoding_results = {}
-for street_name, town in tqdm(geocoding_queries.items()):
-    geocoding_results[street_name] = geocode(street_name, town)
+for address, town in tqdm(geocoding_queries.items()):
+    query_string='https://www.onemap.gov.sg/api/common/elastic/search?searchVal={}&returnGeom=Y&getAddrDetails=Y&pageNum=1'.format(address)
+    resp = requests.get(query_string)
+    data = json.loads(resp.content)
+    chosen_result = data['results'][0]
+    # print(chosen_result)
+    geocoding_results[address] = chosen_result
 
+#Calculate the nearest MRT    
 mrt_results = {}
-for street_name, town in geocoding_queries.items():
-    mrt_results[street_name] = nearest_mrt(geocoding_results[street_name].latitude, geocoding_results[street_name].longitude, mrt_name, mrt_loc)
+for address, town in geocoding_queries.items():
+    distance_km, nearest_mr = nearest_mrt(chosen_result['LATITUDE'], chosen_result['LONGITUDE'], mrt_name, mrt_loc)
+    mrt_results[address] = distance_km
 
-# Fill the dataset with latitude and longitude information from the
-# geocoding results
-df_remaining['Postal'] = df_remaining['Location'].apply(lambda x: postal_from_address(geocoding_results[x]))
+# Fill the dataset with latitude and longitude information from the geocoding results
+df_remaining['Postal'] = df_remaining['Location'].apply(lambda x: geocoding_results[x]['POSTAL'])
 df_remaining['distance_mrt'] = df_remaining['Location'].apply(lambda x: mrt_results[x])
 print("Successfully calculated MRT distances")
 
 # Data formatting and output here
 df_combined_new = pd.concat([df_combined, df_remaining], axis=0).reset_index(drop=True)
+print("The number of un-geopied in dataframe are:",df_combined_new['distance_mrt'].isna().sum())
 
 data_list = []
 for index, item in df_combined_new.iterrows():
