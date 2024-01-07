@@ -1,7 +1,7 @@
 cd ~/hdb_project
 
 source /home/sivakornchong/miniconda3/etc/profile.d/conda.sh
-conda activate HDB_project
+conda activate HDB_pred
 
 rm -r data/2024_pipe model
 mkdir data/2024_pipe
