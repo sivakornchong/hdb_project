@@ -1,4 +1,6 @@
 cd ~/hdb_project
+
+conda init
 conda activate HDB_project
 
 rm -r data/2024_pipe model
