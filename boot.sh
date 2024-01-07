@@ -1,4 +1,5 @@
 cd ~/hdb_project
+conda activate HDB_project
 
 rm -r data/2024_pipe model
 mkdir data/2024_pipe
