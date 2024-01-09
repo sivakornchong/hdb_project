@@ -43,4 +43,3 @@ Conclusion and Next Steps:
 -	Expansion of features can be done:
     o	Consider outputting a list of recent transactions to the webpage. Further visualization and analytics can also be done based on the list and shown on the page. 
 
-
