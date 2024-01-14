@@ -13,11 +13,11 @@ log_timestamp "Wrapper script started"
 
 # Run the first command
 log_timestamp "Executing boot.sh"
-~/hdb_project/boot.sh
+bash ~/hdb_project/boot.sh
 
 # Run the second command
 log_timestamp "Executing huggingface_boot.sh"
-~/HDB_resale_predict/huggingface_boot.sh
+bash ~/HDB_resale_predict/huggingface_boot.sh
 
 # Log end time
 log_timestamp "Wrapper script completed"
