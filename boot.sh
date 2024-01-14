@@ -1,10 +1,12 @@
 set -e
 cd ~/hdb_project
 
-conda env create -f environment.yaml
+conda env create -f environment.yaml --name HDB_pred || echo "Environment already exists"
+
 source /home/sivakornchong/miniconda3/etc/profile.d/conda.sh
 conda activate HDB_pred
 
+echo "Start running data extraction and model optimization"
 rm -r data/2024_pipe model
 mkdir data/2024_pipe
 mkdir model
