@@ -1,5 +1,7 @@
+set -e
 cd ~/hdb_project
 
+conda env create -f environment.yaml
 source /home/sivakornchong/miniconda3/etc/profile.d/conda.sh
 conda activate HDB_pred
 
