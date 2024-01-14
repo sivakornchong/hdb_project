@@ -25,11 +25,11 @@ Block 3 - Model deployment
     machine start-up. 
     2. Completed model is pushed to a front-end page at https://huggingface.co/spaces/sivakornchong/HDB_resale_predict 
 
-Presentation on YouTube:  https://youtu.be/VdJmz-8A9u0  [Jan 2023] 
-
 **Conclusion:**
 -	An XGBoost model was developed with a high test accuracy of 95.8%. 
 -	A pipeline to automatically update the model with latest data has been set up to iterate monthly. 
 
 **Next steps:**
 -    Github Issues list down potential areas for improvements including cloud data storage, model iteration logs, and cloud architech optimization. 
+
+Presentation on YouTube:  https://youtu.be/VdJmz-8A9u0  [Jan 2023] 
