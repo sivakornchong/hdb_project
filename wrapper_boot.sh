@@ -23,6 +23,6 @@ log_timestamp "Executing huggingface_boot.sh"
 log_timestamp "Wrapper script completed"
 
 # Shut down the VM
-log_timestamp "Shutting down the VM"
-sudo shutdown -h now
+# log_timestamp "Shutting down the VM"
+# sudo shutdown -h now
 
