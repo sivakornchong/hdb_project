@@ -38,4 +38,3 @@ Block 3 - Model deployment
 **Next steps:**
 -    Github Issues list down potential areas for improvements including cloud data storage, model iteration logs, and cloud architech optimization. 
 
-Presentation on YouTube:  https://youtu.be/VdJmz-8A9u0  [Jan 2023] 
