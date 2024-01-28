@@ -4,6 +4,12 @@ To develop a reliable housing price predictor for buyers to negotiate better in 
 -	Booming property market in Singapore has resulted in a spike in resale prices of HDB flats. Many owners take opportunity to price their house at a large premium on the market.
 -	It is difficult for buyers to know the intrinsic (sensible) price.
 
+**Technical Details**
+Singapore Housing price prediction model
+- Source code: <a href="https://github.com/sivakornchong/hdb_project">Github repo</a>
+- Deployment is done via huggingface: <a href="https://huggingface.co/spaces/sivakornchong/HDB_resale_predict">Huggingface deployment</a>
+- Model iteration pipeline is hosted on GCP VM.   
+
 **Code:**
 
 Block 1 - Extract data, get features 
