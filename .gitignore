@@ -3,3 +3,4 @@ data/2024_pipe/
 .save
 .swp
 .ipynb_checkpoints
+.idea/
