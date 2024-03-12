@@ -1,4 +1,6 @@
 # Singapore Public Housing Price Prediction Project
+_Sivakorn (Oak) Chongfeungprinya_
+
 **Project Objectives:**
 To develop a reliable housing price predictor for buyers to negotiate better in a hot seller market. 
 -	Booming property market in Singapore has resulted in a spike in resale prices of HDB flats. Many owners take opportunity to price their house at a large premium on the market.
@@ -27,9 +29,13 @@ Block 2 - Model training, selection, and optimization
 
 Block 3 - Model deployment
 
-    1. Deployment on GCP VM - wrapper_boot.sh to run the data/model pipelines and git repository updates upon virtual 
-    machine start-up. 
-    2. Completed model is pushed to a front-end page at https://huggingface.co/spaces/sivakornchong/HDB_resale_predict 
+    1. Autoiteration is set up on GCP virtual machine - wrapper_boot.sh to run the data/model pipelines and the repository are updated with retrained model based on latest data every week. 
+
+![VM autoiteration](https://github.com/sivakornchong/hdb_project/blob/main/imgs/GCP_schedule.png)
+    2. The new iterated model is pushed to a front-end page at https://huggingface.co/spaces/sivakornchong/HDB_resale_predict 
+
+![HuggingFace Deployment](https://github.com/sivakornchong/hdb_project/blob/main/imgs/deployed_img.png)
+
 
 **Conclusion:**
 -	An XGBoost model was developed with a high test accuracy of 95.8%. 
