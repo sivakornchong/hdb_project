@@ -142,10 +142,11 @@ for i in range(num_files):
     file_index = i + 1
     start_index = split_indices[i]
     end_index = split_indices[i + 1]
-    df_cut = df_combined_new.iloc[start_index:end_index]
-    
+    df_cut = df_combined_new.iloc[start_index:end_index].copy()
+    print(f"The relevant index for {file_index} are {start_index}, {end_index}")
+
     with open(f'data/2024_pipe/data_features_{file_index}.json', 'a') as file_handle:
-        print(f"Writing out {file_index}")
+        print(f"Writing out file {file_index}")
         for index, item in tqdm(df_cut.iterrows()):
             labelled_data = process_data(item)
             json_data = json.dumps(labelled_data)
