@@ -131,27 +131,26 @@ def process_data(item):
     }
     return labelled_data
 
-# Write data to separate files one by one
+# Split the dataframe into 3 parts
 num_files = 3
 file_counts = [0] * num_files
-item_per_file = (df_combined_new.shape[0]//num_files)+1
 
-print(item_per_file)
-file_index = 1
+split_indices = [i * (df_combined_new.shape[0] // num_files) for i in range(num_files)]
+split_indices.append(df_combined_new.shape[0])  # Add the last index
 
-count = 0
-for index, item in tqdm(df_combined_new.iterrows()):
+for i in range(num_files):
+    file_index = i + 1
+    start_index = split_indices[i]
+    end_index = split_indices[i + 1]
+    df_cut = df_combined_new.iloc[start_index:end_index]
+    
     with open(f'data/2024_pipe/data_features_{file_index}.json', 'a') as file_handle:
-        labelled_data = process_data(item)
-        json_data = json.dumps(labelled_data)    
-        file_handle.write(json_data + "\n")
-        count += 1
-        file_counts[file_index-1] += 1
-
-        if count > item_per_file:
-            count = 0
-            print(f"Done for file {file_index} with index at {index}")
-            file_index += 1
-            file_handle.close()  # Close the old file
+        print(f"Writing out {file_index}")
+        for index, item in tqdm(df_cut.iterrows()):
+            labelled_data = process_data(item)
+            json_data = json.dumps(labelled_data)
+            file_handle.write(json_data + "\n")
+            file_counts[i] += 1
+    file_handle.close()
 
 print("Successfully wrote out", file_counts, "items")
