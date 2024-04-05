@@ -131,27 +131,12 @@ def process_data(item):
     }
     return labelled_data
 
-# Split the dataframe into 3 parts
-num_files = 3
-file_counts = [0] * num_files
+count = 0
+with open('data/2024_pipe/data_features.json', 'w') as dst:
+    for index, item in tqdm(df_combined_new.iterrows()):
+        labelled_data = process_data(item)
+        json_data = json.dumps(labelled_data)
+        dst.write(json_data + "\n")
+        count += 1
 
-split_indices = [i * (df_combined_new.shape[0] // num_files) for i in range(num_files)]
-split_indices.append(df_combined_new.shape[0])  # Add the last index
-
-for i in range(num_files):
-    file_index = i + 1
-    start_index = split_indices[i]
-    end_index = split_indices[i + 1]
-    df_cut = df_combined_new.iloc[start_index:end_index].copy()
-    print(f"The relevant index for {file_index} are {start_index}, {end_index}")
-
-    with open(f'data/2024_pipe/data_features_{file_index}.json', 'a') as file_handle:
-        print(f"Writing out file {file_index}")
-        for index, item in tqdm(df_cut.iterrows()):
-            labelled_data = process_data(item)
-            json_data = json.dumps(labelled_data)
-            file_handle.write(json_data + "\n")
-            file_counts[i] += 1
-    file_handle.close()
-
-print("Successfully wrote out", file_counts, "items")
+print("Successfully wrote out", count, "items")
