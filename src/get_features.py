@@ -7,6 +7,7 @@ import json
 from misc_fn import nearest_mrt, numerical
 import requests
 
+
 # Rate-limit our requests since we're going to geocode
 # many rows at once. Don't want to overwhelm the server-side!
 agent = geocoders.Nominatim(user_agent = 'hdb_predictor')
@@ -130,15 +131,27 @@ def process_data(item):
     }
     return labelled_data
 
-# Write data to file in chunks
-chunk_size = 10000
+# Write data to separate files one by one
+num_files = 3
+file_counts = [0] * num_files
+item_per_file = (df_combined_new.shape[0]//num_files)+1
+
+print(item_per_file)
+file_index = 1
+
 count = 0
-with open('data/2024_pipe/data_features.json', 'w') as dst:
-    for index, item in tqdm(df_combined_new.iterrows()):
+for index, item in tqdm(df_combined_new.iterrows()):
+    with open(f'data/2024_pipe/data_features_{file_index}.json', 'a') as file_handle:
         labelled_data = process_data(item)
-        json_data = json.dumps(labelled_data)
-        dst.write(json_data + "\n")
+        json_data = json.dumps(labelled_data)    
+        file_handle.write(json_data + "\n")
         count += 1
-        if count % chunk_size == 0:
-            print("Processed", count, "items")
-print("Successfully wrote out", count, "items")
+        file_counts[file_index-1] += 1
+
+        if count > item_per_file:
+            count = 0
+            print(f"Done for file {file_index} with index at {index}")
+            file_index += 1
+            file_handle.close()  # Close the old file
+
+print("Successfully wrote out", file_counts, "items")
