@@ -110,33 +110,35 @@ print("Successfully calculated MRT distances")
 df_combined_new = pd.concat([df_combined, df_remaining], axis=0).reset_index(drop=True)
 print("The number of un-geopied in dataframe are:",df_combined_new['distance_mrt'].isna().sum())
 
-data_list = []
-for index, item in df_combined_new.iterrows():
+# Function to process data
+def process_data(item):
     town_num, flat_num, area, age, transaction, storey, resale_price_adj = numerical(item)
     labelled_data = {
-            'distance_mrt': item['distance_mrt'],
-            'town': town_num,
-            'area': area,
-            'flat_num': flat_num,
-            'age_transation': age,
-            'lease_commence': item['lease_commence_date'],
-            'transaction_yr': transaction,
-            'transaction': item['month'],
-            'storey_height': storey,
-            'resale_price': item['resale_price'],
-            'resale_price_adj': resale_price_adj,
-            #find age at translation
-            # 'resale_info': item,
-            'Postal': item['Postal'],
-            'Location': item['Location']
-        }
-    data_list.append(labelled_data)
+        'distance_mrt': item['distance_mrt'],
+        'town': town_num,
+        'area': area,
+        'flat_num': flat_num,
+        'age_transation': age,
+        'lease_commence': item['lease_commence_date'],
+        'transaction_yr': transaction,
+        'transaction': item['month'],
+        'storey_height': storey,
+        'resale_price': item['resale_price'],
+        'resale_price_adj': resale_price_adj,
+        'Postal': item['Postal'],
+        'Location': item['Location']
+    }
+    return labelled_data
 
-#Write to a file eventually
+# Write data to file in chunks
+chunk_size = 10000
 count = 0
-dst = open('data/2024_pipe/data_features.json', 'w')
-for item in data_list:
-    json_data = json.dumps(item)
-    dst.write(json_data+"\n")
-    count += 1
-print("Successfully write out", count)
+with open('data/2024_pipe/data_features.json', 'w') as dst:
+    for index, item in tqdm(df_combined_new.iterrows()):
+        labelled_data = process_data(item)
+        json_data = json.dumps(labelled_data)
+        dst.write(json_data + "\n")
+        count += 1
+        if count % chunk_size == 0:
+            print("Processed", count, "items")
+print("Successfully wrote out", count, "items")
