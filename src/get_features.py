@@ -71,30 +71,6 @@ with open("data/mrt_list.json", "r") as file:
         loc = tuple([float(i) for i in item["location"]])
         mrt_loc.append(loc)
 
-# # Find the geopy information for the unique remaining locations
-# geocoding_queries = {}
-
-# for i in range(len(unique_locations)):
-#     address = unique_locations.loc[i, 'Location']
-#     town = unique_locations.loc[i, 'town']
-#     geocoding_queries[address] = town
-
-# geocoding_results = {}
-# for street_name, town in tqdm(geocoding_queries.items()):
-#     geocoding_results[street_name] = geocode(street_name, town)
-
-# mrt_results = {}
-# for street_name, town in geocoding_queries.items():
-#     mrt_results[street_name] = nearest_mrt(geocoding_results[street_name].latitude, geocoding_results[street_name].longitude, mrt_name, mrt_loc)
-
-# # Fill the dataset with latitude and longitude information from the
-# # geocoding results
-# df_remaining['Postal'] = df_remaining['Location'].apply(lambda x: postal_from_address(geocoding_results[x]))
-# df_remaining['distance_mrt'] = df_remaining['Location'].apply(lambda x: mrt_results[x])
-# print("Successfully calculated MRT distances")
-
-# For a more consistency with the past data (2023), let us use the Onemap API instead
-
 geocoding_queries = {}
 
 for i in range(len(unique_locations)):
