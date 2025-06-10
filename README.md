@@ -14,7 +14,7 @@ Singapore Housing price prediction model
 
 **Code:**
 
-Block 1 - Extract data, get features 
+Block 1 - Extract data, get features. 
 
 1. connect_api.py - Obtain information from the api on all the resale flats. Write to data_source.json
    1a. create_mrt_list.py - create list of train stations from wikipedia table in MRT_from_wiki.csv. Write to mrt_list.json.
