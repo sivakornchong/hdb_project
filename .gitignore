@@ -1,5 +1,7 @@
 __pycache__
-data/2024_pipe/ 
+model/
+data/2024_pipe/
+data/2025_pipe/
 .save
 .swp
 .ipynb_checkpoints
