@@ -1,6 +1,7 @@
 import json
 import requests
 import pandas as pd
+import logging
 
 
 def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
@@ -11,7 +12,7 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
     r = requests.get(url, params=params)
     data = json.loads(r.content)
     total = data["result"]["total"]
-    print(f"Total number of transaction record found from 2017 is {total}")
+    logging.info(f"Total number of transaction record found from 2017 is {total}")
 
     alldata = pd.DataFrame()
     # pages = 1  #test_run, just try one page
@@ -19,7 +20,7 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
     for page in range(pages + 1):
         offset = page * chunk_size
         params = {"offset": offset, "resource_id": resource_id, "limit": chunk_size}
-        print("Retrieving {} records out of {}.".format(offset, total))
+        logging.info("Retrieving {} records out of {}.".format(offset, total))
         r = requests.get(url, params=params)
         data = json.loads(r.content)
         df = pd.DataFrame(data["result"]["records"])
@@ -30,7 +31,7 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
 
     if save:
         alldata.to_json(output_file, orient="records", lines=True)
-        print(f"Raw json compiled file saved to {output_file}")
+        logging.info(f"Raw json compiled file saved to {output_file}")
 
     return alldata
 

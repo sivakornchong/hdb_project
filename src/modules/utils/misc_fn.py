@@ -27,7 +27,7 @@ def distance_to_mrt(lat, long, location):
     coord_mrt = tuple(location)
     coord_house = (lat, long)
     distance_km = geopy.distance.distance(coord_mrt, coord_house).km
-    # print(distance_km)
+    # logging.info(distance_km)
     return distance_km
 
 
@@ -87,9 +87,7 @@ def price_adj(price, qrtr_transaction):
     RPI_pd = pd.read_csv("data/RPI_dict.csv", header=None)
     RPI_dict = dict(zip(RPI_pd[0], RPI_pd[1]))
     RPI = float(RPI_dict[qrtr_transaction])
-    resale_price_adj = price * (
-        133.9 / RPI
-    )  # 133.9 is the CPI at 1Q2017, which is our baseline
+    resale_price_adj = price * (133.9 / RPI)  # 133.9 is the CPI at 1Q2017, which is our baseline
     return resale_price_adj
 
 
@@ -118,11 +116,9 @@ def mean_std_cross_val_scores(model, X_train, y_train, **kwargs):
     out_col = []
 
     for i in range(len(mean_scores)):
-        out_col.append(
-            (f"%0.3f (+/- %0.3f)" % (mean_scores.iloc[i], std_scores.iloc[i]))
-        )
+        out_col.append((f"%0.3f (+/- %0.3f)" % (mean_scores.iloc[i], std_scores.iloc[i])))
 
-    print(out_col)
+    logging.info(out_col)
     return pd.Series(data=out_col, index=mean_scores.index)
 
 
@@ -138,5 +134,5 @@ def mean_std_cross_val_scores(model, X_train, y_train, **kwargs):
 #             mrt_loc.append(loc)
 
 #     distance_km, nearest_mr = nearest_mrt(1.34849544899052, 103.875566867625, mrt_name, mrt_loc)
-# print(distance_km)
-# print(nearest_mr)
+# logging.info(distance_km)
+# logging.info(nearest_mr)

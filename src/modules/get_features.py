@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 from geopy import geocoders
 from geopy.extra.rate_limiter import RateLimiter
@@ -13,6 +12,7 @@ from modules.utils.variables import (
     mrt_source_file,
     output_file_location,
 )
+import logging
 
 
 # Function to process data
@@ -54,11 +54,11 @@ def merge_split(unique_location_full_test, df_query):
     df_combined = pd.merge(df_query, unique_location_full_test, on="Location", how="left")
     df_remaining = df_combined[df_combined["distance_mrt"].isna()].copy()
     df_combined = df_combined[~df_combined["distance_mrt"].isna()].copy()
-    print(
+    logging.info(
         "Number of non-unique rows to be queried via Onemap API for location:",
         df_remaining.shape[0],
     )
-    print(
+    logging.info(
         "Number of non-unique rows with location information ready:",
         df_combined.shape[0],
     )
@@ -90,14 +90,14 @@ def process(unique_locations, df_remaining, df_combined, mrt_name, mrt_loc):
         town = unique_locations.loc[i, "town"]
         geocoding_queries[address] = town
 
-    print("Using Onemap API for query off location (latitude, longitude, postal code)")
+    logging.info("Using Onemap API for query off location (latitude, longitude, postal code)")
     geocoding_results = {}
     for address, town in tqdm(geocoding_queries.items()):
         query_string = base_query_location.format(address)
         resp = requests.get(query_string)
         data = json.loads(resp.content)
         chosen_result = data["results"][0]
-        # print(chosen_result)
+        # logging.info(chosen_result)
         geocoding_results[address] = chosen_result
 
     # Calculate the nearest MRT
@@ -109,11 +109,11 @@ def process(unique_locations, df_remaining, df_combined, mrt_name, mrt_loc):
     # Fill the dataset with latitude and longitude information from the geocoding results
     df_remaining["Postal"] = df_remaining["Location"].apply(lambda x: geocoding_results[x]["POSTAL"])
     df_remaining["distance_mrt"] = df_remaining["Location"].apply(lambda x: mrt_results[x])
-    print("Successfully calculated MRT distances")
+    logging.info("Successfully calculated MRT distances")
 
     # Data formatting and output here
     df_combined_new = pd.concat([df_combined, df_remaining], axis=0).reset_index(drop=True)
-    print(
+    logging.info(
         "Double checking: The number of un-geopied in dataframe are:",
         df_combined_new["distance_mrt"].isna().sum(),
     )
@@ -129,7 +129,7 @@ def publish_output(output_location, df_combined_new):
             dst.write(json_data + "\n")
             count += 1
 
-    print("Successfully wrote out", count, "items")
+    logging.info("Successfully wrote out", count, "items")
 
 
 def main_feature_eng(historical_data_location, json_raw, mrt_source_file, output_file_location):

@@ -6,3 +6,4 @@ data/2025_pipe/
 .swp
 .ipynb_checkpoints
 .idea/
+logs/
