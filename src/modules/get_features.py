@@ -4,9 +4,15 @@ from geopy import geocoders
 from geopy.extra.rate_limiter import RateLimiter
 from tqdm import tqdm
 import json
-from misc_fn import nearest_mrt, numerical
+from modules.utils.misc_fn import nearest_mrt, numerical
 import requests
-from utils.variables import base_query_location
+from modules.utils.variables import (
+    base_query_location,
+    historical_data_location,
+    json_raw,
+    mrt_source_file,
+    output_file_location,
+)
 
 
 # Function to process data
@@ -76,7 +82,7 @@ def generate_mrt_location(input_file):
     return mrt_name, mrt_loc
 
 
-def process(unique_locations, df_remaining, df_combined):
+def process(unique_locations, df_remaining, df_combined, mrt_name, mrt_loc):
     geocoding_queries = {}
 
     for i in range(len(unique_locations)):
@@ -126,18 +132,16 @@ def publish_output(output_location, df_combined_new):
     print("Successfully wrote out", count, "items")
 
 
-if __name__ == "__main__":
-
-    historical_data_location = "data/2023_pipe/data_features.json"
-    json_raw = "data/2025_pipe/data_source.json"
-    mrt_source_file = "data/mrt_list.json"
-    output_file_location = "data/2025_pipe/data_features.json"
-
+def main_feature_eng(historical_data_location, json_raw, mrt_source_file, output_file_location):
     df_full = pd.read_json(historical_data_location, lines=True)
     df_query = pd.read_json(json_raw, lines=True)
     unique_location_full_test = convert_from_json(df_full)
     unique_locations, df_remaining, df_combined = merge_split(unique_location_full_test, df_query)
 
     mrt_name, mrt_loc = generate_mrt_location(mrt_source_file)
-    df_combined_new = process(unique_locations, df_remaining, df_combined)
+    df_combined_new = process(unique_locations, df_remaining, df_combined, mrt_name, mrt_loc)
     publish_output(output_file_location, df_combined_new)
+
+
+if __name__ == "__main__":
+    main_feature_eng(historical_data_location, json_raw, mrt_source_file, output_file_location)

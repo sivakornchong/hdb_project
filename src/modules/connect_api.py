@@ -1,10 +1,6 @@
 import json
 import requests
 import pandas as pd
-import os
-import sys
-
-# sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 
 def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
@@ -40,9 +36,7 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
 
 
 if __name__ == "__main__":
-    resource_id = (
-        "f1765b54-a209-4718-8d38-a39237f502b3"  # This resource ID is for 2017 onwards.
-    )
+    resource_id = "f1765b54-a209-4718-8d38-a39237f502b3"  # This resource ID is for 2017 onwards.
     output_file = "data/2025_pipe/data_source.json"
 
     fetch_all_data(resource_id, output_file)
