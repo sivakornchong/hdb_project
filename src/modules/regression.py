@@ -25,7 +25,7 @@ def df_prepraration(data_feature_file):
     df_chosen = df_chosen[df_chosen["Postal"] != "NIL"]  # remove the items with no postal code#
     df_chosen["Postal"] = df_chosen["Postal"].astype(int)  # convert to int
 
-    logging.info(df_chosen.shape[0], "filtered out of:", df.shape[0])
+    logging.info(f"{df_chosen.shape[0]} filtered out of: {df.shape[0]}")
 
     # Create train and test sets
     model_data = df_chosen.copy()
@@ -88,7 +88,7 @@ def final_fit(xgb_random_search, preprocess, X_train, y_train, X_test, y_test, m
     logging.info(
         f"Utilizing the xgbregressor model with max_depth at {opt_params['xgbregressor__max_depth']} and gamama at {opt_params['xgbregressor__gamma']}"
     )
-    logging.info("Final model score on test dataset is:", pipe_xgb_opt.score(X_test, y_test))
+    logging.info(f"Final model score on test dataset is: {pipe_xgb_opt.score(X_test, y_test)}")
 
     if save:
 

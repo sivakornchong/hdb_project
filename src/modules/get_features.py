@@ -54,14 +54,8 @@ def merge_split(unique_location_full_test, df_query):
     df_combined = pd.merge(df_query, unique_location_full_test, on="Location", how="left")
     df_remaining = df_combined[df_combined["distance_mrt"].isna()].copy()
     df_combined = df_combined[~df_combined["distance_mrt"].isna()].copy()
-    logging.info(
-        "Number of non-unique rows to be queried via Onemap API for location:",
-        df_remaining.shape[0],
-    )
-    logging.info(
-        "Number of non-unique rows with location information ready:",
-        df_combined.shape[0],
-    )
+    logging.info(f"Number of non-unique rows to be queried via Onemap API for location: {df_remaining.shape[0]}")
+    logging.info(f"Number of non-unique rows with location information ready: {df_combined.shape[0]}")
 
     unique_locations = df_remaining[["town", "Location"]].drop_duplicates().reset_index(drop=True)
 
@@ -114,8 +108,7 @@ def process(unique_locations, df_remaining, df_combined, mrt_name, mrt_loc):
     # Data formatting and output here
     df_combined_new = pd.concat([df_combined, df_remaining], axis=0).reset_index(drop=True)
     logging.info(
-        "Double checking: The number of un-geopied in dataframe are:",
-        df_combined_new["distance_mrt"].isna().sum(),
+        f"Double checking: The number of un-geopied in dataframe are: {df_combined_new['distance_mrt'].isna().sum()}"
     )
     return df_combined_new
 
@@ -129,7 +122,7 @@ def publish_output(output_location, df_combined_new):
             dst.write(json_data + "\n")
             count += 1
 
-    logging.info("Successfully wrote out", count, "items")
+    logging.info(f"Successfully wrote out {count} items")
 
 
 def main_feature_eng(historical_data_location, json_raw, mrt_source_file, output_file_location):
