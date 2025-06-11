@@ -9,14 +9,9 @@ source /home/sivakornchong/miniconda3/etc/profile.d/conda.sh
 conda activate HDB_pred
 
 echo "Start running data extraction and model optimization" >> ~/log_file.txt
-rm -rf data/2024_pipe model
-mkdir data/2024_pipe
-mkdir model
 
 ## Run the Python script
-python src/connect_api.py &&
-python src/get_features.py &&
-python src/regression.py
+python src/main.py
 
 echo "Completed python scripts" >> ~/log_file.txt
 

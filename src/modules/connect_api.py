@@ -1,10 +1,9 @@
 import json
 import requests
 import pandas as pd
-import os
-import sys
-
-# sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+import logging
+from modules.utils.logging_fn import setup_logger
+from modules.utils.variables import resource_id, output_file
 
 
 def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
@@ -15,7 +14,7 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
     r = requests.get(url, params=params)
     data = json.loads(r.content)
     total = data["result"]["total"]
-    print(f"Total number of transaction record found from 2017 is {total}")
+    logging.info(f"Total number of transaction record found from 2017 is {total}")
 
     alldata = pd.DataFrame()
     # pages = 1  #test_run, just try one page
@@ -23,7 +22,7 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
     for page in range(pages + 1):
         offset = page * chunk_size
         params = {"offset": offset, "resource_id": resource_id, "limit": chunk_size}
-        print("Retrieving {} records out of {}.".format(offset, total))
+        logging.info("Retrieving {} records out of {}.".format(offset, total))
         r = requests.get(url, params=params)
         data = json.loads(r.content)
         df = pd.DataFrame(data["result"]["records"])
@@ -34,15 +33,11 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
 
     if save:
         alldata.to_json(output_file, orient="records", lines=True)
-        print(f"Raw json compiled file saved to {output_file}")
+        logging.info(f"Raw json compiled file saved to {output_file}")
 
     return alldata
 
 
 if __name__ == "__main__":
-    resource_id = (
-        "f1765b54-a209-4718-8d38-a39237f502b3"  # This resource ID is for 2017 onwards.
-    )
-    output_file = "data/2025_pipe/data_source.json"
-
+    setup_logger("logs/api_only.log")
     fetch_all_data(resource_id, output_file)
