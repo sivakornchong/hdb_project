@@ -13,6 +13,7 @@ from modules.utils.variables import (
     output_file_location,
 )
 import logging
+from modules.utils.logging_fn import setup_logger
 
 
 # Function to process data
@@ -137,4 +138,5 @@ def main_feature_eng(historical_data_location, json_raw, mrt_source_file, output
 
 
 if __name__ == "__main__":
+    setup_logger("logs/feature_only.log")
     main_feature_eng(historical_data_location, json_raw, mrt_source_file, output_file_location)

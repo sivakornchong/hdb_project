@@ -15,6 +15,7 @@ from modules.utils.variables import (
 )
 import pickle
 import logging
+from modules.utils.logging_fn import setup_logger
 
 
 def df_prepraration(data_feature_file):
@@ -109,4 +110,5 @@ def main_ml(data_feature_file, model_filename):
 
 
 if __name__ == "__main__":
+    setup_logger("logs/ml_only.log")
     main_ml(data_feature_file, model_filename)

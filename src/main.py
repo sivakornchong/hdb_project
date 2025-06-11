@@ -3,20 +3,8 @@ from modules.get_features import main_feature_eng
 from modules.regression import main_ml
 from modules.utils.directory_gen import get_pipeline_paths
 from modules.utils.variables import model_filename, resource_id, mrt_source_file, historical_data_location
+from modules.utils.logging_fn import setup_logger
 import logging
-import os
-
-
-def setup_logger(log_file="pipeline.log", level=logging.INFO):
-    # Create log directory if it doesn't exist
-    os.makedirs(os.path.dirname(log_file), exist_ok=True)
-
-    logging.basicConfig(
-        level=level,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-        handlers=[logging.FileHandler(log_file), logging.StreamHandler()],  # Also logs to stdout
-    )
-
 
 if __name__ == "__main__":
     setup_logger("logs/pipeline.log")

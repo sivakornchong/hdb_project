@@ -2,6 +2,8 @@ import json
 import requests
 import pandas as pd
 import logging
+from modules.utils.logging_fn import setup_logger
+from modules.utils.variables import resource_id, output_file
 
 
 def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
@@ -37,7 +39,5 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
 
 
 if __name__ == "__main__":
-    resource_id = "f1765b54-a209-4718-8d38-a39237f502b3"  # This resource ID is for 2017 onwards.
-    output_file = "data/2025_pipe/data_source.json"
-
+    setup_logger("logs/api_only.log")
     fetch_all_data(resource_id, output_file)
