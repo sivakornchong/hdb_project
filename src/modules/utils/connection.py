@@ -10,7 +10,7 @@ S3_client = boto3.client(
 )
 
 S3_model_PREFIX = "autoiteration/model/"
-S3_log_PREFIX = "autoiteration/logs"
+S3_log_PREFIX = "autoiteration/logs/"
 BUCKET_NAME = "hdb-predict-model"
 
 
