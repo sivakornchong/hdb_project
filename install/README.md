@@ -19,3 +19,6 @@ docker run \
 -v ${pwd}/logs:/app/logs \
 ml_pipeline
 ```
+
+4. To monitor the logs of the container
+`docker logs -f ml_pipeline`

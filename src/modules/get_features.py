@@ -137,6 +137,8 @@ def main_feature_eng(historical_data_location, json_raw, mrt_source_file, output
     unique_location_full_test = convert_from_json(df_full)
     unique_locations, df_remaining, df_combined = merge_split(unique_location_full_test, df_query)
 
+    logger.info("Completed Data Preprocessing, furnishing with more features.")
+
     mrt_name, mrt_loc = generate_mrt_location(mrt_source_file)
     df_combined_new = process(unique_locations, df_remaining, df_combined, mrt_name, mrt_loc)
     publish_output(output_file_location, df_combined_new)
