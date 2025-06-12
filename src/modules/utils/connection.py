@@ -22,3 +22,13 @@ def write_to_s3(PREFIX, file_path):
         logger.info(f"Uploaded file from {file_path} to S3 {s3_key}")
     except Exception as e:
         logger.info(f"Error loading file to S3 {e}")
+
+
+def write_log_to_s3(PREFIX, timestamp, file_path):
+    try:
+        filename = os.path.basename(file_path)
+        s3_key = f"{PREFIX}{timestamp}{filename}"
+        S3_client.upload_file(file_path, BUCKET_NAME, s3_key)
+        logger.info(f"Uploaded file from {file_path} to S3 {s3_key}")
+    except Exception as e:
+        logger.info(f"Error loading file to S3 {e}")
