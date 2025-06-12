@@ -16,6 +16,6 @@ docker run \
 -e AWS_SECRET_ACCESS_KEY=$(awk -F "=" '/aws_secret_access_key/ {print $2}' ~/.aws/credentials | tr -d ' ') \
 -v ${pwd}/src:/app/src \
 -v ${pwd}/model:/app/model \
--v ${pwd}/logs:/app/logs
+-v ${pwd}/logs:/app/logs \
 ml_pipeline
 ```
