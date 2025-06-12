@@ -2,7 +2,7 @@ import json
 import requests
 import pandas as pd
 import logging
-from modules.utils.logging_fn import setup_logger
+from modules.utils.logging_fn import setup_logger, logger
 from modules.utils.variables import resource_id, output_file
 
 
@@ -14,7 +14,7 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
     r = requests.get(url, params=params)
     data = json.loads(r.content)
     total = data["result"]["total"]
-    logging.info(f"Total number of transaction record found from 2017 is {total}")
+    logger.info(f"Total number of transaction record found from 2017 is {total}")
 
     alldata = pd.DataFrame()
     # pages = 1  #test_run, just try one page
@@ -22,7 +22,7 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
     for page in range(pages + 1):
         offset = page * chunk_size
         params = {"offset": offset, "resource_id": resource_id, "limit": chunk_size}
-        logging.info("Retrieving {} records out of {}.".format(offset, total))
+        logger.info("Retrieving {} records out of {}.".format(offset, total))
         r = requests.get(url, params=params)
         data = json.loads(r.content)
         df = pd.DataFrame(data["result"]["records"])
@@ -33,11 +33,11 @@ def fetch_all_data(resource_id, output_file, chunk_size=10000, save=True):
 
     if save:
         alldata.to_json(output_file, orient="records", lines=True)
-        logging.info(f"Raw json compiled file saved to {output_file}")
+        logger.info(f"Raw json compiled file saved to {output_file}")
 
     return alldata
 
 
 if __name__ == "__main__":
-    setup_logger("logs/api_only.log")
+    logger = setup_logger("logs/api_only.log")
     fetch_all_data(resource_id, output_file)

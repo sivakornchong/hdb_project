@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-import logging
+from modules.utils.logging_fn import logger
 
 
 def get_pipeline_paths(base_dir="data") -> dict:
@@ -17,5 +17,5 @@ def get_pipeline_paths(base_dir="data") -> dict:
     # Create log directory if it doesn't exist
     os.makedirs(os.path.dirname(os.path.join(base_dir, year_dir)), exist_ok=True)
 
-    logging.info(paths)
+    logger.info(paths)
     return paths

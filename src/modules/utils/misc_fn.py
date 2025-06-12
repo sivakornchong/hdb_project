@@ -6,6 +6,7 @@ import math
 import pandas as pd
 from sklearn.model_selection import cross_val_score, cross_validate
 from sklearn.metrics import make_scorer, mean_squared_error, mean_absolute_error
+from modules.utils.logging_fn import logger
 
 
 def is_date(string, fuzzy=False):
@@ -27,7 +28,7 @@ def distance_to_mrt(lat, long, location):
     coord_mrt = tuple(location)
     coord_house = (lat, long)
     distance_km = geopy.distance.distance(coord_mrt, coord_house).km
-    # logging.info(distance_km)
+    # logger.info(distance_km)
     return distance_km
 
 
@@ -118,7 +119,7 @@ def mean_std_cross_val_scores(model, X_train, y_train, **kwargs):
     for i in range(len(mean_scores)):
         out_col.append((f"%0.3f (+/- %0.3f)" % (mean_scores.iloc[i], std_scores.iloc[i])))
 
-    logging.info(out_col)
+    logger.info(out_col)
     return pd.Series(data=out_col, index=mean_scores.index)
 
 
@@ -134,5 +135,5 @@ def mean_std_cross_val_scores(model, X_train, y_train, **kwargs):
 #             mrt_loc.append(loc)
 
 #     distance_km, nearest_mr = nearest_mrt(1.34849544899052, 103.875566867625, mrt_name, mrt_loc)
-# logging.info(distance_km)
-# logging.info(nearest_mr)
+# logger.info(distance_km)
+# logger.info(nearest_mr)
