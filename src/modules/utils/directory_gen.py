@@ -13,7 +13,7 @@ def get_pipeline_paths(base_dir="data") -> dict:
         "data_feature_file": os.path.join(base_dir, year_dir, "data_features.json"),
         "year": current_year,
         "year_dir": os.path.join(base_dir, year_dir),
-        "model_output": os.path.join("model", model_timestamp, ".sav"),
+        "model_output": os.path.join("model", model_timestamp + ".sav"),
     }
 
     # Create log directory if it doesn't exist

@@ -15,7 +15,7 @@ from modules.utils.variables import (
 )
 import pickle
 from modules.utils.logging_fn import setup_logger, logger
-from modules.utils.connection import write_to_S3
+from modules.utils.connection import write_to_s3, S3_model_PREFIX
 
 
 def df_prepraration(data_feature_file):
@@ -106,7 +106,7 @@ def main_ml(data_feature_file, model_filename):
     pipe_xgb_opt = final_fit(
         xgb_random_search, preprocess, X_train, y_train, X_test, y_test, model_filename=model_filename
     )
-    write_to_S3(model_filename)
+    write_to_s3(S3_model_PREFIX, model_filename)
     return pipe_xgb_opt
 
 

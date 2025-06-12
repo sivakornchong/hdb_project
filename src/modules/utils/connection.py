@@ -9,19 +9,16 @@ S3_client = boto3.client(
     region_name="us-east-1",
 )
 
-S3_PREFIX = "autoiteration/"
+S3_model_PREFIX = "autoiteration/model/"
+S3_log_PREFIX = "autoiteration/logs"
 BUCKET_NAME = "hdb-predict-model"
 
 
-def write_to_S3(file_path):
+def write_to_s3(PREFIX, file_path):
     try:
         filename = os.path.basename(file_path)
-        s3_key = f"{S3_PREFIX}{filename}"
+        s3_key = f"{PREFIX}{filename}"
         S3_client.upload_file(file_path, BUCKET_NAME, s3_key)
         logger.info(f"Uploaded file from {file_path} to S3 {s3_key}")
     except Exception as e:
         logger.info(f"Error loading file to S3 {e}")
-
-
-if __name__ == "__main__":
-    write_to_S3("model/finalized_model2.sav")
