@@ -7,18 +7,22 @@
 `docker stop ml_pipeline`
 
 3. Instantiate new image and run the newly created container in the background
-```shell
-docker run \
--d \
---name ml_pipeline \
---rm\
--e AWS_ACCESS_KEY_ID=$(awk -F "=" '/aws_access_key_id/ {print $2}' ~/.aws/credentials | tr -d ' ') \
--e AWS_SECRET_ACCESS_KEY=$(awk -F "=" '/aws_secret_access_key/ {print $2}' ~/.aws/credentials | tr -d ' ') \
--v ${pwd}/src:/app/src \
--v ${pwd}/model:/app/model \
--v ${pwd}/logs:/app/logs \
-ml_pipeline
-```
+`bash boot_prod.sh`
 
 4. To monitor the logs of the container
 `docker logs -f ml_pipeline`
+
+## Autoiteration pipeline
+1. Once the docker has completed its run, it will stop.
+
+2. To run again, there is a cronjob that activates it the command `docker start ml_pipeline` upon startup of EC2.
+
+3. The schedule for EC2 cstartup and shutdown is scheduled to be every 15 days by AWS CloudWatch and AWS Lambda.
+
+## To run on development in local computer
+
+1. Install relevant virtual environment
+`pip install -r env/requirements.txt`
+
+2. Run the bash file to inject in the environment variable
+`bash boot_dev.sh`
