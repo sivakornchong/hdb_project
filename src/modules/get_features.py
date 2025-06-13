@@ -88,12 +88,15 @@ def process(unique_locations, df_remaining, df_combined, mrt_name, mrt_loc):
     logger.info("Using Onemap API for query off location (latitude, longitude, postal code)")
     geocoding_results = {}
     for address, town in tqdm(geocoding_queries.items()):
-        query_string = base_query_location.format(address)
-        resp = requests.get(query_string)
-        data = json.loads(resp.content)
-        chosen_result = data["results"][0]
-        # logger.info(chosen_result)
-        geocoding_results[address] = chosen_result
+        try:
+            query_string = base_query_location.format(address)
+            resp = requests.get(query_string)
+            data = json.loads(resp.content)
+            chosen_result = data["results"][0]
+            # logger.info(chosen_result)
+            geocoding_results[address] = chosen_result
+        except Exception as e:
+            logger.error(f"Onemap API query is not possible for {address}")
 
     # Calculate the nearest MRT
     mrt_results = {}
@@ -105,6 +108,8 @@ def process(unique_locations, df_remaining, df_combined, mrt_name, mrt_loc):
     df_remaining["Postal"] = df_remaining["Location"].apply(lambda x: geocoding_results[x]["POSTAL"])
     df_remaining["distance_mrt"] = df_remaining["Location"].apply(lambda x: mrt_results[x])
     logger.info("Successfully calculated MRT distances")
+
+    # TODO: Fix an error here if some of the previous APIs failed.
 
     # Data formatting and output here
     df_combined_new = pd.concat([df_combined, df_remaining], axis=0).reset_index(drop=True)
@@ -131,6 +136,8 @@ def main_feature_eng(historical_data_location, json_raw, mrt_source_file, output
     df_query = pd.read_json(json_raw, lines=True)
     unique_location_full_test = convert_from_json(df_full)
     unique_locations, df_remaining, df_combined = merge_split(unique_location_full_test, df_query)
+
+    logger.info("Completed Data Preprocessing, furnishing with more features.")
 
     mrt_name, mrt_loc = generate_mrt_location(mrt_source_file)
     df_combined_new = process(unique_locations, df_remaining, df_combined, mrt_name, mrt_loc)
