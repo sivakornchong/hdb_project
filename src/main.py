@@ -22,4 +22,4 @@ if __name__ == "__main__":
     logger.info("Running machine learning model development")
     main_ml(paths["data_feature_file"], paths["model_output"])
     logger.info("Completed training ML model")
-    write_log_to_s3(S3_log_PREFIX, log_file_location)
+    write_log_to_s3(S3_log_PREFIX, timestamp, log_file_location)
