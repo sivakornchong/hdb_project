@@ -1,6 +1,8 @@
 import boto3
 import os
 from modules.utils.logging_fn import logger
+import mlflow
+
 
 S3_client = boto3.client(
     "s3",
@@ -12,6 +14,19 @@ S3_client = boto3.client(
 S3_model_PREFIX = "autoiteration/model/"
 S3_log_PREFIX = "autoiteration/logs/"
 BUCKET_NAME = "hdb-predict-model"
+
+
+PRIVATE_IP_MLFLOW_SERVER = "http://172.31.62.85:5000"
+PUBLIC_IP_MLFLOW_SERVER = "http://54.227.128.118:5000"
+
+
+def init_mlflow(name, private_IP=True):
+    if private_IP:
+        mlflow.set_tracking_uri(PRIVATE_IP_MLFLOW_SERVER)
+    else:
+        mlflow.set_tracking_uri(PUBLIC_IP_MLFLOW_SERVER)
+    mlflow.set_experiment(name)
+    logger.info(f"Initialize the MLFlow run with name {name}")
 
 
 def write_to_s3(PREFIX, file_path):

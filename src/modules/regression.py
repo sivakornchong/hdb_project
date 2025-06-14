@@ -16,6 +16,9 @@ from modules.utils.variables import (
 import pickle
 from modules.utils.logging_fn import setup_logger, logger
 from modules.utils.connection import write_to_s3, S3_model_PREFIX
+import mlflow
+import mlflow.data
+from mlflow.data.pandas_dataset import PandasDataset
 
 
 def df_prepraration(data_feature_file):
@@ -31,8 +34,12 @@ def df_prepraration(data_feature_file):
     # Create train and test sets
     model_data = df_chosen.copy()
 
-    X = model_data.drop("resale_price_adj", axis=1)
-    y = model_data["resale_price_adj"]
+    target_col = "resale_price_adj"
+    model_dataset: PandasDataset = mlflow.data.from_pandas(model_data, targets=target_col)
+    mlflow.log_input(model_dataset, context="all")
+
+    X = model_data.drop(target_col, axis=1)
+    y = model_data[target_col]
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=573)
 
@@ -103,6 +110,7 @@ def main_ml(data_feature_file, model_filename):
     X_train, X_test, y_train, y_test = df_prepraration(data_feature_file)
     preprocess = build_preprocessor(numeric_features, categorical_features)
     xgb_random_search = hyperparam_opt(preprocess, X_train, y_train)
+    mlflow.set_tag("Optimized parameter", xgb_random_search)
     pipe_xgb_opt = final_fit(
         xgb_random_search, preprocess, X_train, y_train, X_test, y_test, model_filename=model_filename
     )
