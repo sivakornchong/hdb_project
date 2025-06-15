@@ -10,7 +10,6 @@ from math import sqrt
 from modules.ml.data_setup import df_loading_dd, df_timecut_dd
 from modules.ml.model_pipeline import build_preprocessor, hyperparam_opt, final_fit
 import pandas as pd
-from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 warnings.filterwarnings("ignore", category=UserWarning)
