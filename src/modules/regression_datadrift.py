@@ -33,6 +33,7 @@ def generate_timelist(model_data):
         if end_time <= cutoff_time:
             start_times.append(date)
             end_times.append(end_time)
+            last_added = date
 
     return start_times, end_times
 

@@ -32,7 +32,7 @@ def split_date(dataset, test_months):
     test_df = dataset2[dataset2["transaction"] > cutoff_date].sample(frac=1)
     train_df = dataset2[dataset2["transaction"] <= cutoff_date].sample(frac=1)
 
-    mlflow.set_tag("Test set start", cutoff_date)
+    mlflow.set_tag("Test set start", test_df["transaction"].min())
     mlflow.set_tag("Test set end", test_df["transaction"].max())
     mlflow.set_tag("Train set start", train_df["transaction"].min())
     mlflow.set_tag("Train set end", train_df["transaction"].max())
@@ -102,7 +102,7 @@ def split_date_dd(dataset, start_date, end_date, test_months):
 
     assert end_date < cutoff_date, "End date must be earlier than cutoff date"
 
-    mlflow.set_tag("Test set start", cutoff_date)
+    mlflow.set_tag("Test set start", test_df["transaction"].min())
     mlflow.set_tag("Test set end", test_df["transaction"].max())
     mlflow.set_tag("Train set start", train_df["transaction"].min())
     mlflow.set_tag("Train set end", train_df["transaction"].max())
