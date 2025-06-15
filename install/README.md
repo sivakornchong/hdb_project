@@ -6,10 +6,14 @@
 2. Stop existing image 
 `docker stop ml_pipeline`
 
-3. Instantiate new image and run the newly created container in the background
+3. Clear the existing stopped container and image
+`docker container prune`
+`docker image prune`
+
+4. Instantiate new image and run the newly created container in the background
 `bash boot_prod.sh`
 
-4. To monitor the logs of the container
+5. To monitor the logs of the container
 `docker logs -f ml_pipeline`
 
 ## Autoiteration pipeline
