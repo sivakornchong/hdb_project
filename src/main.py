@@ -1,16 +1,21 @@
 from modules.connect_api import fetch_all_data
 from modules.get_features import main_feature_eng
 from modules.regression import main_ml
-
-# from modules.regression_datadrift import main_ml
 from modules.utils.directory_gen import get_pipeline_paths
-from modules.utils.variables import resource_id, mrt_source_file, historical_data_location, experiment_name
+from modules.utils.variables import (
+    resource_id,
+    mrt_source_file,
+    historical_data_location,
+    experiment_name,
+    use_private_ip,
+)
 from modules.utils.logging_fn import logger, log_file_location
 from modules.utils.connection import write_log_to_s3, S3_log_PREFIX, init_mlflow
 from modules.rpi_generator import main_rpi
 import argparse
 import warnings
 
+# from modules.regression_datadrift import main_ml
 warnings.filterwarnings("ignore", category=UserWarning)
 
 
@@ -25,7 +30,7 @@ if __name__ == "__main__":
     logger.info("Regenerating RPI based on webscrapping data and extrapolation")
     main_rpi()
     logger.info("Connecting to MLFlow for experimental logging")
-    init_mlflow(experiment_name, private_IP=False)
+    init_mlflow(experiment_name, private_IP=use_private_ip)
 
     if not args.skip_extraction:
         logger.info("Fetching all data from HDB in JSON format")
