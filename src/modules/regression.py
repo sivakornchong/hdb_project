@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import RandomizedSearchCV
+from sklearn.metrics import mean_squared_error
 import xgboost as xgb
 from modules.utils.variables import (
     relevant_columns_ml,
@@ -23,7 +24,12 @@ from modules.utils.connection import write_to_s3, S3_model_PREFIX
 import mlflow
 import mlflow.data
 from mlflow.data.pandas_dataset import PandasDataset
+from mlflow.models.signature import infer_signature
 from dateutil.relativedelta import relativedelta
+import warnings
+from math import sqrt
+
+warnings.filterwarnings("ignore", category=UserWarning)
 
 
 def split_random(model_data, test_size):
@@ -65,9 +71,9 @@ def split_date(dataset, test_months):
     return X_train, X_test, y_train, y_test
 
 
-def mlflow_logdataset(name: str, model_data: pd.DataFrame, artefact=False):
-    model_dataset: PandasDataset = mlflow.data.from_pandas(name, model_data, targets=target_col)
-    mlflow.log_input(model_dataset, context="all")
+def mlflow_logdataset(name: str, model_data: pd.DataFrame, target_col=None, artefact=False):
+    model_dataset: PandasDataset = mlflow.data.from_pandas(model_data, targets=target_col)
+    mlflow.log_input(model_dataset, context=name)
 
     if artefact:
         pass  # TODO: send artefact to S3
@@ -88,7 +94,7 @@ def df_prepraration(data_feature_file, split_rand=split_rand):
     # Create train and test sets
     model_data = df_chosen.copy()
 
-    mlflow_logdataset("All data", model_data)
+    mlflow_logdataset("All data", model_data, target_col=target_col)
 
     # Add tag whether the split is random or by month
     if split_rand:
@@ -150,19 +156,44 @@ def final_fit(xgb_random_search, preprocess, X_train, y_train, X_test, y_test, m
     )
     pipe_xgb_opt.fit(X_train, y_train)
 
+    r2_score = pipe_xgb_opt.score(X_test, y_test)
+
     # Test of the test datasets
     logger.info(
         f"Utilizing the xgbregressor model with max_depth at {opt_params['xgbregressor__max_depth']} and gamama at {opt_params['xgbregressor__gamma']}"
     )
-    logger.info(f"Final model score on test dataset is: {pipe_xgb_opt.score(X_test, y_test)}")
+    logger.info(f"Final model score on test dataset is: {r2_score}")
 
     # Log metric (not just score)
+
+    y_pred = pipe_xgb_opt.predict(X_test)
+    test_mse = sqrt(mean_squared_error(y_test, y_pred))
+    y_pred = pipe_xgb_opt.predict(X_train)
+    train_mse = sqrt(mean_squared_error(y_train, y_pred))
+
+    mlflow.log_metric("Test MSE", test_mse)
+    mlflow.log_metric("Train MSE", train_mse)
+    mlflow.log_metric("Test R2", r2_score)
 
     if save:
         pickle.dump(pipe_xgb_opt, open(model_filename, "wb"))
         logger.info("Model file saved")
 
-        # Log final location of model
+        # Log final location of model via MLFlow, sending to S3
+        signature = infer_signature(X_train, pipe_xgb_opt.predict(X_train))
+        mlflow.sklearn.log_model(pipe_xgb_opt, name="xgb_model", signature=signature, input_example=X_train.iloc[:5])
+        artifact_uri = mlflow.get_artifact_uri("xgb_model")
+        logger.info("Frinal model is saved to {artifact_uri}")
+
+    # Get run info
+    run = mlflow.active_run()
+    run_id = run.info.run_id
+    experiment_id = run.info.experiment_id
+    tracking_url = mlflow.get_tracking_uri()
+
+    ui_url = f"{tracking_url}/#/experiments/{experiment_id}/runs/{run_id}"
+
+    logger.info(f"Experiment results are tracked in {ui_url}")
 
     return pipe_xgb_opt
 
@@ -175,7 +206,8 @@ def main_ml(data_feature_file, model_filename):
     pipe_xgb_opt = final_fit(
         xgb_random_search, preprocess, X_train, y_train, X_test, y_test, model_filename=model_filename
     )
-    write_to_s3(S3_model_PREFIX, model_filename)
+
+    # write_to_s3(S3_model_PREFIX, model_filename)  ## Replaced by MLFlow
     return pipe_xgb_opt
 
 
