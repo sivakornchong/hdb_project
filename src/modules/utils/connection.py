@@ -17,18 +17,21 @@ BUCKET_NAME = "hdb-predict-model"
 
 
 PRIVATE_IP_MLFLOW_SERVER = "http://172.31.62.85:5000"
-PUBLIC_IP_MLFLOW_SERVER = "http://54.227.128.118:5000"
+PUBLIC_IP_MLFLOW_SERVER = "http://54.227.128.118:5000"  # This may change since we do not have elastic IP
 
 
 def init_mlflow(name, private_IP=True):
     if private_IP:
+        logger.info("Utilizing private IP address to connect to MLFlow")
         mlflow.set_tracking_uri(PRIVATE_IP_MLFLOW_SERVER)
     else:
+        logger.info("Utilizing public IP address to connect to MLFlow")
         mlflow.set_tracking_uri(PUBLIC_IP_MLFLOW_SERVER)
     mlflow.set_experiment(name)
-    logger.info(f"Initialize the MLFlow run with name {name}")
+    logger.info(f"Initialize the MLFlow experiment with name {name}")
 
 
+# Replaced by MLFlow
 def write_to_s3(PREFIX, file_path):
     try:
         filename = os.path.basename(file_path)
