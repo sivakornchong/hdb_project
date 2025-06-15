@@ -35,7 +35,7 @@ def split_date(dataset, test_months):
     mlflow.set_tag("Test set start", cutoff_date)
     mlflow.set_tag("Test set end", test_df["transaction"].max())
     mlflow.set_tag("Train set start", train_df["transaction"].min())
-    mlflow.set_tag("Train set end", train_df["transaction"].min())
+    mlflow.set_tag("Train set end", train_df["transaction"].max())
     mlflow.set_tag("Test ratio", test_df.shape[0] / dataset2.shape[0])
 
     X_train = train_df.drop(columns=target_col)
@@ -105,7 +105,7 @@ def split_date_dd(dataset, start_date, end_date, test_months):
     mlflow.set_tag("Test set start", cutoff_date)
     mlflow.set_tag("Test set end", test_df["transaction"].max())
     mlflow.set_tag("Train set start", train_df["transaction"].min())
-    mlflow.set_tag("Train set end", train_df["transaction"].min())
+    mlflow.set_tag("Train set end", train_df["transaction"].max())
     mlflow.set_tag("Test ratio", test_df.shape[0] / dataset2.shape[0])
 
     X_train = train_df.drop(columns=target_col)

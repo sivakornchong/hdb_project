@@ -10,12 +10,15 @@ import warnings
 from math import sqrt
 from modules.ml.data_setup import df_preparation
 from modules.ml.model_pipeline import build_preprocessor, hyperparam_opt, final_fit
+from datetime import datetime
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
 
 def main_ml(data_feature_file, model_filename):
     X_train, X_test, y_train, y_test = df_preparation(data_feature_file)
+    current_time = datetime.now()
+    mlflow.log_param("model_train_date", current_time.date())
     preprocess = build_preprocessor(numeric_features, categorical_features)
     xgb_random_search = hyperparam_opt(preprocess, X_train, y_train)
     mlflow.set_tag("Optimized parameter", xgb_random_search)

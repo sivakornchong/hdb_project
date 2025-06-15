@@ -1,8 +1,6 @@
 from modules.utils.variables import (
     numeric_features,
     categorical_features,
-    model_filename,
-    data_feature_file,
     test_months,
 )
 from modules.utils.logging_fn import logger
@@ -27,7 +25,11 @@ def generate_timelist(model_data):
 
     start_times = []
     end_times = []
+    last_added = None
     for date in transaction_dates:
+        if date.year < 2023:
+            if last_added is not None and (date - last_added).days < 115:
+                continue
         end_time = date + relativedelta(months=12)
         if end_time <= cutoff_time:
             start_times.append(date)
@@ -43,6 +45,9 @@ def main_ml(data_feature_file, model_filename):
 
     for i in range(len(start_times)):
         with mlflow.start_run(run_name=f"Train {start_times[i].date()} to {end_times[i].date()}"):
+            logger.info(f"Training for trainset {start_times[i].date()} to {end_times[i].date()}")
+            mlflow.log_param("train_start_date", start_times[i].date())
+            mlflow.log_param("experiment_index", i)
             X_train, X_test, y_train, y_test = df_timecut_dd(model_data, start_times[i], end_times[i])
             preprocess = build_preprocessor(numeric_features, categorical_features)
             xgb_random_search = hyperparam_opt(preprocess, X_train, y_train)
