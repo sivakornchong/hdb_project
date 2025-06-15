@@ -20,9 +20,7 @@ from modules.utils.variables import (
 )
 import pickle
 from modules.utils.logging_fn import setup_logger, logger
-from modules.utils.connection import write_to_s3, S3_model_PREFIX
 import mlflow
-import mlflow.data
 from mlflow.data.pandas_dataset import PandasDataset
 from mlflow.models.signature import infer_signature
 from dateutil.relativedelta import relativedelta
