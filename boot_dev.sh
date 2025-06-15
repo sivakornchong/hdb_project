@@ -11,4 +11,4 @@ else
     python src/main.py
 fi
 
-# To run skipping extraction: ./boot_dev --skip-extraction
+# To run skipping extraction: ./boot_dev.sh --skip-extraction

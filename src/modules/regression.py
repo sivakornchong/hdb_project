@@ -12,6 +12,10 @@ from modules.utils.variables import (
     categorical_features,
     model_filename,
     data_feature_file,
+    test_size,
+    target_col,
+    split_rand,
+    test_months,
 )
 import pickle
 from modules.utils.logging_fn import setup_logger, logger
@@ -19,9 +23,57 @@ from modules.utils.connection import write_to_s3, S3_model_PREFIX
 import mlflow
 import mlflow.data
 from mlflow.data.pandas_dataset import PandasDataset
+from dateutil.relativedelta import relativedelta
 
 
-def df_prepraration(data_feature_file):
+def split_random(model_data, test_size):
+
+    X = model_data.drop(target_col, axis=1)
+    y = model_data[target_col]
+
+    mlflow.set_tag("Test set start", X["transaction"].min())
+    mlflow.set_tag("Test set end", X["transaction"].max())
+    mlflow.set_tag("Train set start", X["transaction"].min())
+    mlflow.set_tag("Train set end", X["transaction"].max())
+    mlflow.set_tag("Test ratio", test_size)
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=573)
+    return X_train, X_test, y_train, y_test
+
+
+def split_date(dataset, test_months):
+    dataset2 = dataset.copy()
+
+    dataset2 = dataset2.sort_values(by="transaction")  # ensure sorted by date
+    cutoff_date = dataset2["transaction"].max() - relativedelta(months=test_months)
+
+    test_df = dataset2[dataset2["transaction"] > cutoff_date].sample(frac=1)
+    train_df = dataset2[dataset2["transaction"] <= cutoff_date].sample(frac=1)
+
+    mlflow.set_tag("Test set start", cutoff_date)
+    mlflow.set_tag("Test set end", dataset2["transaction"].max())
+    mlflow.set_tag("Train set start", dataset2["transaction"].min())
+    mlflow.set_tag("Train set end", dataset2["transaction"].min())
+    mlflow.set_tag("Test ratio", test_df.shape[0] / dataset2.shape[0])
+
+    X_train = train_df.drop(columns=target_col)
+    y_train = train_df[target_col]
+
+    X_test = test_df.drop(columns=target_col)
+    y_test = test_df[target_col]
+
+    return X_train, X_test, y_train, y_test
+
+
+def mlflow_logdataset(name: str, model_data: pd.DataFrame, artefact=False):
+    model_dataset: PandasDataset = mlflow.data.from_pandas(name, model_data, targets=target_col)
+    mlflow.log_input(model_dataset, context="all")
+
+    if artefact:
+        pass  # TODO: send artefact to S3
+
+
+def df_prepraration(data_feature_file, split_rand=split_rand):
     df = pd.read_json(data_feature_file, lines=True)
     df = df.sample(frac=1, random_state=42)
 
@@ -29,19 +81,25 @@ def df_prepraration(data_feature_file):
     df_chosen = df_chosen[df_chosen["Postal"] != "NIL"]  # remove the items with no postal code#
     df_chosen["Postal"] = df_chosen["Postal"].astype(int)  # convert to int
 
+    df_chosen["transaction"] = pd.to_datetime(df_chosen["transaction"], format="%Y-%m")
+
     logger.info(f"{df_chosen.shape[0]} filtered out of: {df.shape[0]}")
 
     # Create train and test sets
     model_data = df_chosen.copy()
 
-    target_col = "resale_price_adj"
-    model_dataset: PandasDataset = mlflow.data.from_pandas(model_data, targets=target_col)
-    mlflow.log_input(model_dataset, context="all")
+    mlflow_logdataset("All data", model_data)
 
-    X = model_data.drop(target_col, axis=1)
-    y = model_data[target_col]
+    # Add tag whether the split is random or by month
+    if split_rand:
+        mlflow.set_tag("Split Method", "Random")
+        X_train, X_test, y_train, y_test = split_random(model_data, test_size=test_size)
+    else:
+        mlflow.set_tag("Split Method", "By date")
+        X_train, X_test, y_train, y_test = split_date(model_data, test_months=test_months)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=573)
+    mlflow_logdataset("Train data", X_train)
+    mlflow_logdataset("Test data", X_test)
 
     return X_train, X_test, y_train, y_test
 
@@ -98,10 +156,13 @@ def final_fit(xgb_random_search, preprocess, X_train, y_train, X_test, y_test, m
     )
     logger.info(f"Final model score on test dataset is: {pipe_xgb_opt.score(X_test, y_test)}")
 
-    if save:
+    # Log metric (not just score)
 
+    if save:
         pickle.dump(pipe_xgb_opt, open(model_filename, "wb"))
         logger.info("Model file saved")
+
+        # Log final location of model
 
     return pipe_xgb_opt
 

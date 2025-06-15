@@ -22,6 +22,7 @@ relevant_columns_ml = [
     "resale_price_adj",
     "town",
     "flat_num",
+    "transaction",
 ]
 
 numeric_features = [
@@ -33,3 +34,7 @@ numeric_features = [
 ]
 categorical_features = ["town", "flat_num"]
 model_filename = "model/finalized_model2.sav"
+test_size = 0.2
+target_col = "resale_price_adj"
+test_months = 3
+split_rand = False
