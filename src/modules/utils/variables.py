@@ -1,3 +1,7 @@
+# For main.py
+experiment_name = "Auto-iteration"
+# experiment_name = "Data Drift Experiment 2"
+
 # For connect_api.py
 resource_id = "f1765b54-a209-4718-8d38-a39237f502b3"  # This resource ID is for 2017 onwards.
 output_file = "data/2025_pipe/data_source.json"
@@ -22,6 +26,7 @@ relevant_columns_ml = [
     "resale_price_adj",
     "town",
     "flat_num",
+    "transaction",
 ]
 
 numeric_features = [
@@ -33,3 +38,7 @@ numeric_features = [
 ]
 categorical_features = ["town", "flat_num"]
 model_filename = "model/finalized_model2.sav"
+test_size = 0.2
+target_col = "resale_price_adj"
+test_months = 3
+split_rand = False
