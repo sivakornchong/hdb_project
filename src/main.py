@@ -1,8 +1,8 @@
 from modules.connect_api import fetch_all_data
 from modules.get_features import main_feature_eng
+from modules.regression import main_ml
 
-# from modules.regression import main_ml
-from modules.regression_datadrift import main_ml
+# from modules.regression_datadrift import main_ml
 from modules.utils.directory_gen import get_pipeline_paths
 from modules.utils.variables import resource_id, mrt_source_file, historical_data_location, experiment_name
 from modules.utils.logging_fn import logger, log_file_location
